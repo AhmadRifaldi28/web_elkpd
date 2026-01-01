@@ -1,0 +1,246 @@
+<style>
+/* ===== TABLE RESPONSIVE PBL ===== */
+#observasiTable,
+#diskusiTable {
+    min-width: 720px !important;
+}
+
+#observasiTable thead th,
+#diskusiTable thead th {
+    background: #e0efff !important;
+}
+
+.table-responsive {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+.action {
+    width: 20%;
+}
+
+/* Responsive Styles */
+@media (max-width: 1051px) {
+    .action {
+        width: 28%;
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+
+    #observasiTable thead th,
+    #diskusiTable thead th {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+    }
+}
+
+@media (max-width: 576px) {
+    #observasiTable td {
+        white-space: nowrap;
+    }
+}
+</style>
+
+<div class="container-fluid">
+    <div class="pagetitle mb-3">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="<?= base_url($url_name . '/dashboard/class_detail/' . $class_id) ?>">
+                        PBL
+                    </a>
+                </li>
+                <li class="breadcrumb-item active">Penyelidikan Mandiri & Kelompok</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+        <a href="<?= base_url($url_name . '/pbl/tahap2/' . $class_id) ?>" class="btn btn-secondary">← Kembali ke Tahap
+            2</a>
+        <a href="<?= base_url($url_name . '/pbl/tahap4/' . $class_id); ?>" class="btn btn-outline-primary me-1">
+            <i class="bi bi-list-task"></i> Lanjut ke Tahap 4
+        </a>
+    </div>
+
+    <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>"
+        value="<?= $this->security->get_csrf_hash(); ?>">
+    <input type="hidden" id="classIdHidden" value="<?= $class_id; ?>">
+
+    <div class="alert alert-info border-0 shadow-sm">
+        <i class="bi bi-info-circle-fill me-2"></i>
+        Halaman ini menampilkan daftar <span id="info-label" class="fw-bold">ruang observasi</span>.
+        Klik tombol <strong>"Detail"</strong> untuk melihat detail ruang <span id="info-label2"
+            class="fw-bold">observasi</span>.
+    </div>
+
+    <ul class="nav nav-tabs mb-3" id="pblTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="observasi-tab" data-bs-toggle="tab" data-bs-target="#observasi"
+                type="button" role="tab">Ruang Observasi</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="diskusi-tab" data-bs-toggle="tab" data-bs-target="#diskusi" type="button"
+                role="tab">Forum Diskusi</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="pblTabContent">
+
+        <!-- Tab 1: Ruang Observasi -->
+        <div class="tab-pane fade show active" id="observasi" role="tabpanel">
+            <div class="d-flex justify-content-between mb-2">
+                <h5>
+                    <i class="bi bi-file-text me-1"></i>
+                    <strong class="text-dark">Daftar Ruang Observasi</strong>
+                </h5>
+                <div class="d-flex gap-2">
+                    <?php if ($is_admin_or_guru): ?>
+                    <button class="btn btn-success btn-sm" id="btnAddObservasi"><i class="bi bi-plus-circle me-1"></i>
+                        Tambah Ruang</button>
+                    <a href="<?= base_url($url_name . '/pbl_observasi/panduan_observasi_tahap3/' . $class_id); ?>"
+                        class="btn btn-info btn-sm">
+                        Panduan Observasi
+                    </a>
+                    <?php endif; ?>
+
+                    <?php if ($url_name == 'siswa'): ?>
+                    <a href="<?= site_url('siswa/pbl_observasi/panduan_observasi'); ?>" class="btn btn-info btn-sm">
+                        Panduan Observasi
+                    </a>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="observasiTable">
+                    <thead class="table-light">
+                        <tr>
+                            <th style="width:60px">No</th>
+                            <th>Judul</th>
+                            <th>Deskripsi</th>
+                            <th class="action">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tab 2: Forum Diskusi -->
+        <div class="tab-pane fade" id="diskusi" role="tabpanel">
+            <div class="d-flex justify-content-between mb-2">
+                <h5>
+                    <i class="bi bi-chat-text me-1"></i>
+                    <strong>Daftar Topik Diskusi</strong>
+                </h5>
+                <?php if ($is_admin_or_guru): ?>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-success btn-sm" id="btnAddDiskusi"><i class="bi bi-plus-circle me-1"></i>
+                        Tambah Topik</button>
+                    <a href="<?= base_url($url_name . '/pbl_forum/panduan_diskusi_tahap3/' . $class_id); ?>"
+                        class="btn btn-info btn-sm">
+                        Panduan Diskusi
+                    </a>
+                </div>
+                <?php endif; ?>
+
+                <?php if ($url_name == 'siswa'): ?>
+                <a href="<?= site_url('siswa/pbl_forum/panduan_diskusi'); ?>" class="btn btn-info btn-sm">
+                    Panduan Forum Diskusi
+                </a>
+                <?php endif; ?>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="diskusiTable">
+                    <thead class="table-light">
+                        <tr>
+                            <th style="width:60px">No</th>
+                            <th>Judul</th>
+                            <th>Deskripsi Singkat</th>
+                            <th class="action">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal 1: Observasi -->
+<div class="modal fade" id="observasiModal" tabindex="-1" aria-labelledby="observasiModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content shadow-lg border-0">
+            <form id="observasiForm" autocomplete="off">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title mb-0" id="observasiModalLabel">Form Ruang Observasi</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="observasiId">
+                    <input type="hidden" name="class_id" value="<?= $class_id; ?>">
+
+                    <div class="mb-3">
+                        <label for="observasiTitle" class="form-label">Judul Ruang Observasi</label>
+                        <input type="text" name="title" id="observasiTitle" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="observasiDescription" class="form-label">Deskripsi / Instruksi</label>
+                        <textarea name="description" id="observasiDescription" class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 2: Diskusi -->
+<div class="modal fade" id="diskusiModal" tabindex="-1" aria-labelledby="diskusiModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content shadow-lg border-0">
+            <form id="diskusiForm" autocomplete="off">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title mb-0" id="diskusiModalLabel">Form Topik Diskusi</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="diskusiId">
+                    <input type="hidden" name="class_id" value="<?= $class_id; ?>">
+
+                    <div class="mb-3">
+                        <label for="diskusiTitle" class="form-label">Judul Topik Diskusi</label>
+                        <input type="text" name="title" id="diskusiTitle" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="diskusiDescription" class="form-label">Deskripsi Diskusi</label>
+                        <textarea name="description" id="diskusiDescription" class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+window.BASE_URL = "<?= base_url(); ?>";
+window.CSRF_TOKEN_NAME = "<?= $this->security->get_csrf_token_name(); ?>";
+window.IS_ADMIN_OR_GURU = <?= $is_admin_or_guru ? 'true' : 'false' ?>;
+window.CURRENT_CLASS_ID = '<?= $class_id; ?>';
+window.URL_NAME = '<?= $url_name; ?>';
+</script>
+<script type="module" src="<?= base_url('assets/js/pbl_tahap3.js'); ?>"></script>
