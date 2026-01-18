@@ -2,7 +2,7 @@
 <div class="card shadow-sm mb-4">
     <div class="card-header bg-white">
         <h6 class="m-0 fw-bold text-primary">
-            <i class="bi bi-chat-dots"></i> Panduan Fitur ForumDiskusi
+            <i class="bi bi-chat-dots"></i> Panduan Fitur Forum Diskusi
         </h6>
     </div>
     <div class="card-body">

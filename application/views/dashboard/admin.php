@@ -84,7 +84,7 @@ foreach ($cards as $c):
     </div>
   </div>
   
-  <div class="col-lg-6">
+  <div class="col-md-4">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Distribusi Siswa per Kelas</h5>

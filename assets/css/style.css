@@ -9,8 +9,19 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+/* 1. Definisi Warna Dasar (Root Variables) */
 :root {
   scroll-behavior: smooth;
+  /* Warna utama (Violet) */
+  --bd-violet-bg: #712cf9; 
+  --bd-violet-rgb: 113, 44, 249;
+  
+  /* Warna Accent (Kuning/Orange contohnya) */
+  --bd-accent: #ffe484;
+  --bd-accent-rgb: 255, 228, 132;
+  
+  /* Warna text dark */
+  --bd-dark: #212529; 
 }
 
 body {
@@ -269,6 +280,70 @@ h6 {
 .btn-close:focus {
   outline: 0;
   box-shadow: none;
+}
+
+
+/* 2. Custom Button Primary */
+.btn-bd-primary {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  
+  /* Hover: Menggelapkan warna 10% (Manual Hex code dari #712cf9) */
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #6528e0; 
+  --bs-btn-hover-border-color: #6528e0;
+  
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  
+  /* Active: Menggelapkan warna 20% */
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #5a23c8;
+  --bs-btn-active-border-color: #5a23c8;
+}
+
+/* 3. Custom Button Accent */
+.btn-bd-accent {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bd-accent);
+  --bs-btn-border-color: var(--bd-accent);
+  
+  --bs-btn-hover-color: var(--bd-dark);
+  --bs-btn-hover-bg: var(--bd-accent);
+  --bs-btn-hover-border-color: var(--bd-accent);
+  
+  --bs-btn-focus-shadow-rgb: var(--bd-accent-rgb);
+  
+  --bs-btn-active-color: var(--bd-dark);
+  --bs-btn-active-bg: var(--bd-accent);
+  --bs-btn-active-border-color: var(--bd-accent);
+}
+
+/* 4. Custom Button Light */
+.btn-bd-light {
+  /* Hasil mix violet + white 75% */
+  --btn-custom-color: #dcbfff; 
+
+  --bs-btn-color: #6c757d; /* gray-600 */
+  --bs-btn-border-color: #dee2e6; /* border-color default */
+  
+  --bs-btn-hover-color: var(--btn-custom-color);
+  --bs-btn-hover-border-color: var(--btn-custom-color);
+  
+  --bs-btn-active-color: var(--btn-custom-color);
+  --bs-btn-active-bg: #fff;
+  --bs-btn-active-border-color: var(--btn-custom-color);
+  
+  --bs-btn-focus-border-color: var(--btn-custom-color);
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+}
+
+/* 5. Custom Button Size (Large) */
+.bd-btn-lg {
+  --bs-btn-border-radius: .5rem;
+  padding: .8125rem 2rem;
+  font-size: 1.25rem;
 }
 
 /* Accordion */

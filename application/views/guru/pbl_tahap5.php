@@ -54,13 +54,13 @@ thead th {
     </div>
     <div class="d-flex gap-2">
         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
-            <a href="<?= base_url($url_name . '/pbl/tahap4/' . $class_id) ?>" class="btn btn-secondary">← Kembali ke
-                Tahap
-                4</a>
+            <a href="<?= base_url($url_name . '/pbl/tahap4/' . $class_id) ?>" class="btn btn-secondary">
+                <i class="ri-arrow-go-back-line"></i> Kembali
+            </a>
 
             <a href="<?= base_url($url_name . '/pbl/export_excel/' . $class_id); ?>" target="_blank"
                 class="btn btn-success me-1">
-                <i class="bi bi-file-earmark-spreadsheet"></i> Excel
+                <i class="ri-file-excel-2-line"></i> Excel
             </a>
 
             <a href="<?= base_url($url_name . '/pbl/export_report/' . $class_id); ?>" target="_blank"
@@ -80,7 +80,7 @@ thead th {
 
     <div class="card shadow-sm border-0 mb-4">
         <div class="card-header bg-white py-3">
-            <h5 class="mb-0 card-title text-primary"><i class="bi bi-bar-chart-line me-1"></i> Rekap Nilai Siswa
+            <h5 class="mb-0 card-title text-primary"><i class="ri-line-chart-line me-1"></i> Rekap Nilai Siswa
             </h5>
         </div>
         <div class="d-flex gap-2">
@@ -143,7 +143,7 @@ thead th {
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content shadow-lg border-0">
             <form id="refleksiForm" autocomplete="off">
-                <div class="modal-header bg-primary text-white">
+                <div class="modal-header bg-primary-subtle">
                     <h5 class="modal-title mb-0" id="refleksiModalLabel">Form Refleksi</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
@@ -185,7 +185,7 @@ thead th {
                 </div>
                 <div class="modal-footer bg-light">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Simpan</button>
+                    <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Simpan</button>
                 </div>
             </form>
         </div>

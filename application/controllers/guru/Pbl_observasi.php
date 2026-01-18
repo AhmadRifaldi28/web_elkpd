@@ -12,28 +12,43 @@ class Pbl_observasi extends CI_Controller
 
     // Halaman Detail (Menampilkan List Upload Siswa)
     public function detail($slot_id = null)
-    {
-        if (!$slot_id) redirect('guru/pbl');
+{
+    if (!$slot_id) redirect('guru/pbl');
 
-        $slot = $this->Pbl_observasi_model->get_slot_by_id($slot_id);
-        if (!$slot) show_404();
+    $slot = $this->Pbl_observasi_model->get_slot_by_id($slot_id);
+    if (!$slot) show_404();
 
-        $data['title'] = 'Detail Observasi: ' . $slot->title;
-        $data['slot'] = $slot;
-        $data['class_id'] = $slot->class_id; // Untuk tombol kembali
-        
-        // Data user & role untuk view
-        $data['user'] = $this->session->userdata();
-        $data['url_name'] = 'guru'; // atau dinamis sesuai role
-        $role_id = $this->session->userdata('role_id');
-        // $data['is_admin_or_guru'] = ... (logika cek role Anda)
-        $data['is_admin_or_guru'] = true; // Hardcode true karena ini controller Guru
+    $data['title'] = 'Detail Observasi: ' . $slot->title;
+    $data['slot'] = $slot;
+    $data['class_id'] = $slot->class_id;
+    
+    // --- TAMBAHAN KODE DI SINI ---
+    // 1. Ambil data statistik dari Model
+    $stats = $this->Pbl_observasi_model->get_slot_statistics($slot_id);
+    
+    // 2. Masukkan ke array $data agar bisa diakses di View
+    $data['stat_total']   = $stats['total'];
+    $data['stat_graded']  = $stats['graded'];
+    $data['stat_pending'] = $stats['pending'];
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('guru/pbl_observasi_detail', $data);
-        $this->load->view('templates/footer');
+    // 3. Hitung Persentase untuk Progress Bar
+    // (Cegah pembagian dengan nol jika tidak ada upload)
+    if ($stats['total'] > 0) {
+        $data['progress_percent'] = round(($stats['graded'] / $stats['total']) * 100);
+    } else {
+        $data['progress_percent'] = 0;
     }
+    // -----------------------------
+
+    $data['user'] = $this->session->userdata();
+    $data['url_name'] = 'guru';
+    $data['is_admin_or_guru'] = true;
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('guru/pbl_observasi_detail', $data);
+    $this->load->view('templates/footer');
+}
 
     // --- AJAX METHODS ---
 

@@ -107,7 +107,9 @@
         </nav>
     </div>
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <a href="<?= base_url('guru/pbl/tahap2/' . $class_id) ?>" class="btn btn-secondary">← Kembali</a>
+        <a href="<?= base_url('guru/pbl/tahap2/' . $class_id) ?>" class="btn btn-secondary">
+            <i class="ri-arrow-go-back-line"></i> Kembali
+        </a>
     </div>
 
     <input type="hidden" id="ttsIdHidden" value="<?= $tts->id; ?>">
@@ -159,7 +161,7 @@
             <!-- Tabel Nilai Siswa -->
             <div class="card shadow-sm h-100">
                 <div class="card-header bg-success text-white">
-                    <h5 class="mb-0"><i class="bi bi-trophy"></i> Daftar Nilai Siswa</h5>
+                    <h5 class="mb-0"><i class="ri-trophy-line"></i> Daftar Nilai Siswa</h5>
                 </div>
                 <div class="card-body" id="submissionsTableContainer">
                     <div class="table-responsive">

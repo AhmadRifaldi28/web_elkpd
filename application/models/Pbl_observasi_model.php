@@ -35,7 +35,7 @@ class Pbl_observasi_model extends CI_Model
   }
 
 	// Ambil upload HANYA milik siswa yang login di slot tertentu
-  public function get_uploads_by_slot_and_user($slot_id, $user_id)
+  /*public function get_uploads_by_slot_and_user($slot_id, $user_id)
   {
   	$this->db->select('*');
   	$this->db->from($this->table_uploads);
@@ -43,6 +43,24 @@ class Pbl_observasi_model extends CI_Model
   	$this->db->where('user_id', $user_id);
   	$this->db->order_by('created_at', 'DESC');
   	return $this->db->get()->result();
+  }*/
+
+  public function get_uploads_by_slot_and_user($slot_id, $user_id)
+  {
+    // Select data upload DAN score dari tabel results
+    $this->db->select('u.*, r.score, r.feedback'); 
+    $this->db->from($this->table_uploads . ' as u');
+    
+    // Join ke tabel results untuk cek apakah sudah dinilai
+    $this->db->join($this->table_results . ' as r', 
+      'r.observation_slot_id = u.observation_slot_id AND r.user_id = u.user_id', 
+      'left'); // Gunakan LEFT JOIN agar data upload tetap muncul meski belum dinilai
+
+    $this->db->where('u.observation_slot_id', $slot_id);
+    $this->db->where('u.user_id', $user_id);
+    $this->db->order_by('u.created_at', 'DESC');
+    
+    return $this->db->get()->result();
   }
 
 	// Simpan data file ke database
@@ -129,6 +147,31 @@ class Pbl_observasi_model extends CI_Model
   {
     $this->db->where('id', $id);
     return $this->db->delete($this->table_results);
+  }
+
+  // Tambahkan function ini di dalam class Pbl_observasi_model
+
+  public function get_slot_statistics($slot_id)
+  {
+    // 1. Hitung Total Upload (File)
+    $this->db->where('observation_slot_id', $slot_id);
+    $total_uploads = $this->db->count_all_results($this->table_uploads);
+
+    // 2. Hitung Upload yang "Sudah Dinilai"
+    // Logikanya: Menghitung baris di tabel Uploads yang memiliki pasangan di tabel Results
+    $this->db->select('COUNT(u.id) as graded_count');
+    $this->db->from($this->table_uploads . ' as u');
+    $this->db->join($this->table_results . ' as r', 
+        'r.user_id = u.user_id AND r.observation_slot_id = u.observation_slot_id');
+    $this->db->where('u.observation_slot_id', $slot_id);
+    $graded_query = $this->db->get()->row();
+    $graded_count = $graded_query->graded_count;
+
+    return [
+      'total' => $total_uploads,
+      'graded' => $graded_count,
+      'pending' => $total_uploads - $graded_count // Sisa yang belum dinilai
+    ];
   }
 
 }

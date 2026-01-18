@@ -58,10 +58,11 @@
     </div>
 
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
-        <a href="<?= base_url($url_name . '/pbl/index/' . $class_id) ?>" class="btn btn-secondary">← Kembali ke Tahap
-            1</a>
+        <a href="<?= base_url($url_name . '/pbl/index/' . $class_id) ?>" class="btn btn-secondary">
+            <i class="ri-arrow-go-back-line"></i> Kembali
+        </a>
         <a href="<?= base_url($url_name . '/pbl/tahap3/' . $class_id); ?>" class="btn btn-outline-primary me-1">
-            <i class="bi bi-list-task"></i> Lanjut ke Tahap 3
+            <i class="ri-survey-line"></i> Tahap 3
         </a>
     </div>
 
@@ -90,7 +91,7 @@
         <div class="tab-pane fade show active" id="quiz" role="tabpanel">
             <div class="d-flex justify-content-between mb-2">
                 <h5>
-                    <i class="bi bi-card-checklist me-1"></i>
+                    <i class="ri-question-line me-1"></i>
                     <strong class="text-dark">Daftar Kuis</strong>
                 </h5>
                 <div class="d-flex gap-2 m-2">
@@ -164,12 +165,12 @@
 </div>
 
 <div class="modal fade" id="quizModal" tabindex="-1" aria-labelledby="quizModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content shadow-lg border-0">
             <form id="quizForm" autocomplete="off">
 
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title mb-0" id="quizModalLabel">Form Kuis</h5>
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="quizModalLabel">Form Kuis</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
@@ -190,7 +191,7 @@
 
                 <div class="modal-footer bg-light">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
 
             </form>
@@ -199,11 +200,11 @@
 </div>
 
 <div class="modal fade" id="ttsModal" tabindex="-1" aria-labelledby="ttsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content shadow-lg border-0">
             <form id="ttsForm" autocomplete="off">
 
-                <div class="modal-header bg-primary text-white">
+                <div class="modal-header bg-success text-white">
                     <h5 class="modal-title mb-0" id="ttsModalLabel">Form Teka-Teki Silang</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
@@ -218,14 +219,14 @@
                         <input type="text" name="title" id="ttsTitle" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label for="ttsGridData" class="form-label">Data Grid</label>
+                        <label for="ttsGridData" class="form-label">Data Grid (8-25)</label>
                         <input type="number" name="grid_data" id="ttsGridData" class="form-control">
                     </div>
                 </div>
 
                 <div class="modal-footer bg-light">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
 
             </form>

@@ -59,10 +59,11 @@
     </div>
 
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
-        <a href="<?= base_url($url_name . '/pbl/tahap2/' . $class_id) ?>" class="btn btn-secondary">← Kembali ke Tahap
-            2</a>
+        <a href="<?= base_url($url_name . '/pbl/tahap2/' . $class_id) ?>" class="btn btn-secondary">
+            <i class="ri-arrow-go-back-line"></i> Kembali
+        </a>
         <a href="<?= base_url($url_name . '/pbl/tahap4/' . $class_id); ?>" class="btn btn-outline-primary me-1">
-            <i class="bi bi-list-task"></i> Lanjut ke Tahap 4
+            <i class="ri-file-edit-line"></i> Tahap 4
         </a>
     </div>
 
@@ -94,7 +95,7 @@
         <div class="tab-pane fade show active" id="observasi" role="tabpanel">
             <div class="d-flex justify-content-between mb-2">
                 <h5>
-                    <i class="bi bi-file-text me-1"></i>
+                    <i class="ri-survey-line me-1"></i>
                     <strong class="text-dark">Daftar Ruang Observasi</strong>
                 </h5>
                 <div class="d-flex gap-2">
@@ -173,10 +174,10 @@
 
 <!-- Modal 1: Observasi -->
 <div class="modal fade" id="observasiModal" tabindex="-1" aria-labelledby="observasiModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content shadow-lg border-0">
             <form id="observasiForm" autocomplete="off">
-                <div class="modal-header bg-primary text-white">
+                <div class="modal-header bg-success text-white">
                     <h5 class="modal-title mb-0" id="observasiModalLabel">Form Ruang Observasi</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
@@ -196,7 +197,7 @@
                 </div>
                 <div class="modal-footer bg-light">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
             </form>
         </div>
@@ -205,10 +206,10 @@
 
 <!-- Modal 2: Diskusi -->
 <div class="modal fade" id="diskusiModal" tabindex="-1" aria-labelledby="diskusiModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content shadow-lg border-0">
             <form id="diskusiForm" autocomplete="off">
-                <div class="modal-header bg-primary text-white">
+                <div class="modal-header bg-success text-white">
                     <h5 class="modal-title mb-0" id="diskusiModalLabel">Form Topik Diskusi</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
@@ -228,7 +229,7 @@
                 </div>
                 <div class="modal-footer bg-light">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
             </form>
         </div>

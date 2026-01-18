@@ -32,8 +32,9 @@ thead th {
     </div>
 
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <a href="<?= base_url($url_name . '/pbl/tahap4/' . $class_id) ?>" class="btn btn-secondary">← Kembali ke Tahap
-            4</a>
+        <a href="<?= base_url($url_name . '/pbl/tahap4/' . $class_id) ?>" class="btn btn-secondary">
+            <i class="ri-arrow-go-back-line"></i> Kembali
+        </a>
         <button class="btn btn-success disabled" disabled><i class="bi bi-check-circle"></i> Project Selesai</button>
     </div>
 

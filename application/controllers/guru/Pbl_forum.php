@@ -124,6 +124,9 @@ class Pbl_forum extends CI_Controller
 	{
     $data['title'] = 'Panduan Diskusi – Tahap 3';
     $data['class_id'] = $class_id;
+    $data['url_name'] = 'guru';
+    $role_id = $this->session->userdata('role_id');    
+    $data['is_admin_or_guru'] = $this->User_model->check_is_teacher($role_id);
     $this->load->view('templates/header', $data);
     $this->load->view('guru/panduan/tahap3_diskusi', $data);
     $this->load->view('templates/footer');

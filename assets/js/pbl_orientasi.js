@@ -75,10 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fileHtml = `
       <div class="d-flex gap-2 align-items-center justify-content-center">
-        <span class="badge bg-${badge}">
+        <span class="border rounded border-${badge} p-1">
           <i class="bi ${icon} me-1"></i> ${ext.toUpperCase()}
         </span>
-        <button class="btn btn-outline-info btn-sm text-dark btn-preview"
+        <button class="btn btn-bd-primary btn-sm btn-preview"
           data-id="${item.id}" data-ext="${ext}">
           Lihat
         </button>

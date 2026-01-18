@@ -43,7 +43,9 @@
     </div>
 
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
-        <a href="<?= base_url($url_name . '/pbl/tahap3/' . $topic->class_id) ?>" class="btn btn-secondary">← Kembali</a>
+        <a href="<?= base_url($url_name . '/pbl/tahap3/' . $topic->class_id) ?>" class="btn btn-secondary">
+            <i class="ri-arrow-go-back-line"></i> Kembali
+        </a>
     </div>
 
     <div class="alert alert-info border-0 shadow-sm">
@@ -58,7 +60,7 @@
         </button>
         <?php if ($is_admin_or_guru): ?>
         <a href="<?= base_url($url_name . '/pbl_forum/panduan_detail_diskusi_tahap3/' . $class_id); ?>"
-            class="btn btn-info btn-sm">
+            class="btn btn-info mx-2">
             Panduan Forum Diskusi
         </a>
         <?php endif; ?>

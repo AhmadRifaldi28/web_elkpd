@@ -30,111 +30,117 @@ document.addEventListener("DOMContentLoaded", () => {
 		deleteMethod: "POST",
 		deleteNameField: "original_name",
 
-		// Mapper
-		dataMapper: (item, i) => {
-			const uploadDate = new Date(item.created_at).toLocaleString("id-ID", {
-				dateStyle: "medium",
-				timeStyle: "short",
-			});
+        // Mapper
+        dataMapper: (item, i) => {
+            const uploadDate = new Date(item.created_at).toLocaleString("id-ID", {
+                dateStyle: "medium",
+                timeStyle: "short",
+            });
 
-			// const fileUrl = `${window.BASE_URL}uploads/observasi/${item.file_name}`;
-			const fileUrl = `${window.BASE_URL}file/observasi/${item.file_name}`;
+            const fileUrl = `${window.BASE_URL}file/observasi/${item.file_name}`;
+            
+            // --- LOGIKA BARU: Generate Inisial Avatar ---
+            // Mengambil huruf depan dari setiap kata nama siswa (maks 2 huruf)
+            const initials = item.student_name
+                .split(" ")
+                .map((n) => n[0])
+                .slice(0, 2)
+                .join("")
+                .toUpperCase();
+            
+            // Layout Kolom Nama dengan Avatar
+            const studentHtml = `
+                <div class="student-info-wrapper">
+                    <div>
+                        <strong class="text-dark">${item.student_name}</strong>
+                        <div class="small text-muted mt-1">
+                            <i class="bi bi-clock"></i> ${uploadDate}
+                        </div>
+                        <div class="small text-muted">
+                            <i class="bi bi-file-earmark-text"></i> ${item.original_name}
+                        </div>
+                    </div>
+                </div>
+            `;
+            // ---------------------------------------------
 
-			// Logika Tombol Nilai
-			let gradeBtnHtml = "";
-			let gradeStatusHtml = "";
-			let deleteGradeBtn = "";
+            let gradeBtnHtml = "";
+            let gradeStatusHtml = "";
+            let deleteGradeBtn = "";
 
-			// Jika nilai sudah ada (score tidak null)
-			if (item.score !== null && item.score !== undefined) {
-				// Tampilan Status Nilai
-				let badgeColor =
-					item.score >= 75
-						? "bg-success"
-						: item.score >= 60
-						? "bg-warning text-dark"
-						: "bg-danger";
-				gradeStatusHtml = `
-                    <span class="badge ${badgeColor}" style="font-size: 0.9em;">${
-					item.score
-				}</span>
-                    ${
-											item.feedback
-												? `<br><small class="text-muted"><i class="bi b-chat-left-text"></i> ${item.feedback.substring(
-														0,
-														20
-												  )}...</small>`
-												: ""
-										}
+            if (item.score !== null && item.score !== undefined) {
+                // ... (Logika Status Nilai Tetap Sama) ...
+                // Sederhanakan tampilan badge agar lebih modern (rounded-pill)
+                 let badgeColor =
+                    item.score >= 75
+                        ? "bg-success"
+                        : item.score >= 60
+                        ? "bg-warning text-dark"
+                        : "bg-danger";
+                
+                gradeStatusHtml = `
+                    <div class="d-flex flex-column align-items-center">
+                        <span class="badge ${badgeColor} rounded-pill px-3 mb-1" style="font-size: 0.9rem;">
+                            ${item.score}
+                        </span>
+                        ${item.feedback ? `<i class="bi bi-chat-dots text-muted" title="${item.feedback}" data-bs-toggle="tooltip"></i>` : ''}
+                    </div>
                 `;
-
-				// Tombol Edit Nilai
-				gradeBtnHtml = `
-                    <button class="btn btn-sm btn-warning btn-grade mb-1" 
+                
+                gradeBtnHtml = `
+                    <button class="btn btn-sm btn-outline-warning btn-grade" 
                         title="Edit Nilai"
                         data-user_id="${item.user_id}" 
                         data-student_name="${item.student_name}"
                         data-grade_id="${item.grade_id}"
                         data-score="${item.score}"
                         data-feedback="${item.feedback || ""}">
-                        <i class="bi bi-pencil-square"></i> Edit Nilai
+                        Edit
                     </button>
                 `;
-
-				// Tombol Hapus Nilai (Hanya muncul jika sudah dinilai)
-				deleteGradeBtn = `
-                    <button class="btn btn-sm btn-outline-danger btn-delete-grade mb-1" 
+                
+                deleteGradeBtn = `
+                    <button class="btn btn-sm btn-outline-danger btn-delete-grade" 
                         title="Hapus Nilai"
                         data-id="${item.grade_id}" 
                         data-student_name="${item.student_name}">
-                        Hapus Nilai
+                        Reset
                     </button>
                 `;
-			} else {
-				// Belum Dinilai
-				gradeStatusHtml = `<span class="badge bg-secondary">Belum Dinilai</span>`;
 
-				// Tombol Beri Nilai
-				gradeBtnHtml = `
-                    <button class="btn btn-sm btn-primary btn-grade mb-1" 
+            } else {
+                gradeStatusHtml = `<span class="badge bg-secondary bg-opacity-25 text-secondary rounded-pill">Belum Dinilai</span>`;
+                
+                gradeBtnHtml = `
+                    <button class="btn btn-sm btn-primary btn-grade" 
                         title="Beri Nilai"
                         data-user_id="${item.user_id}" 
                         data-student_name="${item.student_name}"
                         data-grade_id=""
                         data-score=""
                         data-feedback="">
-                        Beri Nilai
+                        Nilai
                     </button>
                 `;
-			}
+            }
 
-			return [
-				i + 1,
-				`<div>
-                    <strong>${item.student_name}</strong><br>
-                    <small class="text-muted"><i class="bi bi-file-earmark"></i> ${
-											item.original_name
-										}</small><br>
-                    <small class="text-muted">${item.description || ""}</small>
-                 </div>`,
-				`<a href="${fileUrl}" target="_blank" class="btn btn-sm btn-info text-dark"><i class="bi bi-download"></i> Unduh</a>`,
-
-				// Kolom Status Nilai
-				gradeStatusHtml,
-
-				// Kolom Aksi (Nilai, Hapus Nilai, Hapus File)
-				`<div class="d-flex flex-column gap-1">
+            return [
+                `<div class="text-center text-muted fw-bold">${i + 1}</div>`, // No
+                studentHtml, // Nama Siswa & Avatar Baru
+                `<div class="text-center"><a href="${fileUrl}" target="_blank" class="btn btn-sm btn-light border text-primary"><i class="bi bi-download me-1"></i> Unduh</a></div>`,
+                `<div class="text-center">${gradeStatusHtml}</div>`, // Status
+                `<div class="text-center gap-1 d-flex justify-content-center">
                     ${gradeBtnHtml}
                     ${deleteGradeBtn}
-                    <button class="btn btn-sm btn-danger btn-delete" 
+                    <button class="btn btn-sm btn-outline-secondary btn-delete" 
                         title="Hapus File"
                         data-id="${item.id}" 
-                        data-original_name="${item.student_name} - ${item.original_name}">
-                        <i class="bi bi-trash"></i> Hapus File
+                        data-original_name="${item.student_name}">
+                        Hapus
                     </button>
                  </div>`,
-			];
-		},
+            ];
+        },
 		formPopulator: () => {},
 		onAdd: () => {},
 	};

@@ -11,8 +11,27 @@ document.addEventListener('DOMContentLoaded', () => {
     tokenHash: csrfEl ? csrfEl.value : ''
   };
 
+  // Helper untuk update statistik halaman
+  const updateStats = () => {
+    // Timeout kecil untuk memastikan tabel terisi
+    setTimeout(() => {
+        const questionRows = document.querySelectorAll('#questionTable tbody tr');
+        const submissionRows = document.querySelectorAll('#submissionsTable tbody tr');
+        
+        // Cek jika baris berisi "No data found"
+        const qCount = (questionRows.length === 1 && questionRows[0].cells.length === 1) ? 0 : questionRows.length;
+        const sCount = (submissionRows.length === 1 && submissionRows[0].cells.length === 1) ? 0 : submissionRows.length;
+
+        const statQ = document.getElementById('statTotalQuestions');
+        const statS = document.getElementById('statTotalSubmissions');
+        
+        if(statQ) statQ.innerText = qCount;
+        if(statS) statS.innerText = sCount;
+    }, 1000);
+  };
+
   // ============================================================
-  // 1. KONFIGURASI TABEL PERTANYAAN (CRUD Lengkap)
+  // 1. KONFIGURASI TABEL PERTANYAAN
   // ============================================================
   const questionConfig = {
     baseUrl: window.BASE_URL,
@@ -21,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     formId: 'questionForm',
     modalLabelId: 'questionModalLabel',
     tableId: 'questionTable',
+    tableParentSelector: '#questionTableContainer',
     btnAddId: 'btnAddQuestion',
     hiddenIdField: 'questionId',
     csrf: csrfConfig,
@@ -36,27 +56,31 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     deleteNameField: 'question', 
 
-    // Mapper Pertanyaan
+    // Mapper Pertanyaan (Updated with Remix Icons & Better Styling)
     dataMapper: (q, i) => [
-      i + 1,
-      q.question_text.length > 60 ? q.question_text.substring(0, 60) + '...' : q.question_text,
-      `<strong>${q.correct_answer}</strong>`,
+      `<div class="text-center font-weight-bold text-muted">${i + 1}</div>`,
+      `<div style="font-size: 0.95rem;">${q.question_text}</div>`,
+      `<div class="text-center"><span class="badge bg-success bg-opacity-10 text-success border border-success px-3">${q.correct_answer}</span></div>`,
       `
-        <button class="btn btn-sm btn-warning btn-edit"
-          data-id="${q.id}"
-          data-question_text="${q.question_text}"
-          data-option_a="${q.option_a}"
-          data-option_b="${q.option_b}"
-          data-option_c="${q.option_c}"
-          data-option_d="${q.option_d}"
-          data-correct_answer="${q.correct_answer}">
-          Ubah
-        </button>
-        <button class="btn btn-sm btn-danger btn-delete"
-          data-id="${q.id}"
-          data-question="${q.question_text.substring(0, 20)}...">
-          Hapus
-        </button>
+        <div class="text-center">
+            <button class="btn btn-sm btn-soft-primary btn-edit me-1"
+            title="Edit Soal"
+            data-id="${q.id}"
+            data-question_text="${q.question_text}"
+            data-option_a="${q.option_a}"
+            data-option_b="${q.option_b}"
+            data-option_c="${q.option_c}"
+            data-option_d="${q.option_d}"
+            data-correct_answer="${q.correct_answer}">
+              ubah
+            </button>
+            <button class="btn btn-sm btn-outline-danger btn-delete border-0"
+            title="Hapus Soal"
+            data-id="${q.id}"
+            data-question="${q.question_text.substring(0, 20)}...">
+              Hapus
+            </button>
+        </div>
       `
     ],
 
@@ -73,67 +97,67 @@ document.addEventListener('DOMContentLoaded', () => {
     onAdd: (form) => {
       form.reset();
       form.querySelector('#questionId').value = '';
-    }
+    },
+    
+    // Update stats after load/save/delete
+    onDataLoaded: updateStats
   };
 
-  // Init Handler Pertanyaan
   const questionHandler = new CrudHandler(questionConfig);
   questionHandler.init();
 
 
   // ============================================================
-  // 2. KONFIGURASI TABEL NILAI SISWA (Read & Delete Only)
+  // 2. KONFIGURASI TABEL NILAI SISWA
   // ============================================================
   const submissionConfig = {
     baseUrl: window.BASE_URL,
     entityName: 'Nilai Siswa',
     tableId: 'submissionsTable',
-    tableParentSelector: '#submissionsTableContainer', // Opsional, default .card-body
-    
-    // Tidak butuh modalId/formId/btnAddId karena tidak ada fitur tambah/edit manual
-    
+    tableParentSelector: '#submissionsTableContainer',
     csrf: csrfConfig,
     urls: {
       load: `guru/pbl_kuis/get_quiz_submissions/${CURRENT_QUIZ_ID}`,
-      // save: Tidak dipakai
       delete: `guru/pbl_kuis/delete_quiz_submission`
     },
     deleteMethod: 'POST',
-    deleteNameField: 'student_name', // Nama field untuk konfirmasi hapus
+    deleteNameField: 'student_name',
 
-    // Mapper Nilai
+    // Mapper Nilai (Updated with Remix Icons & Badges)
     dataMapper: (res, i) => {
-        // Format Tanggal
         const date = new Date(res.created_at).toLocaleDateString('id-ID', {
             day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
         });
 
-        // Warna badge nilai
         let badgeClass = 'bg-danger';
         if(res.score >= 80) badgeClass = 'bg-success';
         else if(res.score >= 60) badgeClass = 'bg-warning text-dark';
 
         return [
-            i + 1,
-            `<strong>${res.student_name}</strong><br><small class="text-muted">${res.username}</small>`,
-            `<span class="badge ${badgeClass}" style="font-size:1em">${res.score}</span> <br> <small>(${res.total_correct}/${res.total_questions} Benar)</small>`,
-            `<small>${date}</small>`,
+            `<div class="text-center text-muted">${i + 1}</div>`,
+            `<div class="d-flex align-items-center">
+                <strong>${res.student_name}</strong>
+             </div>`,
+            `<div class="text-center"><span class="badge ${badgeClass} rounded-pill px-3 shadow-sm" style="font-size:0.9em">${res.score}</span></div>`,
+            `<div class="text-center small text-muted"><i class="ri-time-line me-1"></i>${date}</div>`,
             `
-            <button class="btn btn-sm btn-outline-danger btn-delete"
-              data-id="${res.id}"
-              data-student_name="${res.student_name} (Nilai: ${res.score})">
-              </i>Reset
-            </button>
+            <div class="text-center">
+                <button class="btn btn-sm btn-outline-danger btn-delete border-0"
+                title="Batalkan/Hapus Nilai"
+                data-id="${res.id}"
+                data-student_name="${res.student_name} (Nilai: ${res.score})">
+                <i class="ri-close-circle-line me-1"></i>Batal
+                </button>
+            </div>
             `
         ];
     },
     
-    // Dummy functions karena tidak ada form edit/add
     formPopulator: () => {},
-    onAdd: () => {}
+    onAdd: () => {},
+    onDataLoaded: updateStats
   };
 
-  // Init Handler Nilai
   const submissionHandler = new CrudHandler(submissionConfig);
   submissionHandler.init();
 

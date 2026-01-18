@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Logic Tombol Input/Ubah
-    const btnClass = isFilled ? 'btn-warning' : 'btn-primary';
+    const btnClass = isFilled ? 'btn-warning' : 'btn-bd-primary';
     const btnText = isFilled ? 'Ubah' : 'Input';
     const icon = isFilled ? 'bi-pencil-square' : 'bi-plus-circle';
 

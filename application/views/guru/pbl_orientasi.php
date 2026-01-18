@@ -84,12 +84,12 @@
     <!-- ================= NAVIGASI ATAS ================= -->
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
         <a href="<?= base_url($url_name . '/dashboard/class_detail/' . $class_id) ?>" class="btn btn-secondary">
-            <i class="bi bi-arrow-left"></i> Kembali ke Kelas
+            <i class="ri-arrow-go-back-line"></i> Kembali ke Kelas
         </a>
 
         <a href="<?= base_url($url_name . '/pbl/tahap2/' . $class_id); ?>" class="btn btn-outline-primary">
-            <i class="bi bi-list-task me-1"></i>
-            Lanjut ke Tahap 2
+            <i class="ri-question-line"></i>
+            Tahap 2
         </a>
     </div>
 
@@ -111,7 +111,7 @@
     <div class="card shadow-sm">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">
-                <i class="bi bi-journal-text me-1"></i>
+                <i class="ri-book-2-line me-1"></i>
                 <strong class="text-dark">Daftar Skenario Masalah</strong>
             </h5>
             <div class="d-flex align-items-center gap-2 ">
@@ -175,10 +175,10 @@
 <!-- ================= MODAL FORM ================= -->
 <?php if ($is_admin_or_guru): ?>
 <div class="modal fade" id="pblModal" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <form id="pblForm" enctype="multipart/form-data">
-                <div class="modal-header">
+                <div class="modal-header bg-success text-white">
                     <h5 class="modal-title" id="pblModalLabel"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
@@ -205,7 +205,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-success">
                         Simpan
                     </button>
                 </div>

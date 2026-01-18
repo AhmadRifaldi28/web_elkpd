@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // [DIPERSINGKAT] Data Mapper Kuis
     dataMapper: (q, i) => {
-      const detailBtn = `<a href="${window.BASE_URL}${window.URL_NAME}/pbl_kuis/kuis_detail/${q.id}" class="btn btn-sm btn-info"> Detail</a>`;
+      const detailBtn = `<a href="${window.BASE_URL}${window.URL_NAME}/pbl_kuis/kuis_detail/${q.id}" class="btn btn-sm btn-bd-primary"> Detail</a>`;
       
       const actionBtns = IS_ADMIN_OR_GURU ? `
         <button class="btn btn-sm btn-warning btn-edit" data-id="${q.id}" data-title="${q.title}" data-description="${q.description || ''}">Ubah</button>
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Data Mapper TTS
     dataMapper: (t, i) => {
-      const detailBtn = `<a href="${window.BASE_URL}${window.URL_NAME}/pbl_tts/detail/${t.id}" class="btn btn-info btn-sm me-1"> Detail</a>`;
+      const detailBtn = `<a href="${window.BASE_URL}${window.URL_NAME}/pbl_tts/detail/${t.id}" class="btn btn-bd-primary btn-sm me-1"> Detail</a>`;
       
       const actionBtns = IS_ADMIN_OR_GURU ? `
         <button class="btn btn-sm btn-warning btn-edit" data-id="${t.id}" data-title="${t.title}" data-grid_data="${t.grid_data || ''}">Ubah</button>
