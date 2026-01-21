@@ -15,10 +15,10 @@
 	}
 
 	/* Gradient Background Class */
-	.bg-primary-app {
+	./*bg-primary-app {
 		background: linear-gradient(135deg, #4154f1 0%, #2132bd 100%) !important;
 		color: white;
-	}
+	}*/
 
 	.bg-violet-app {
 		background: linear-gradient(135deg, var(--bd-violet-bg) 0%, #4a148c 100%) !important;
@@ -185,14 +185,36 @@
 					</span>
 
 					<div class="profile-social-links mt-2">
-						<a href="#" title="Email"><i class="ri-mail-line"></i></a>
-						<a href="#" title="Settings"><i class="ri-settings-3-line"></i></a>
-						<a href="#" title="Activity"><i class="ri-time-line"></i></a>
+					    <a href="mailto:<?= html_escape($user_db->email) ?>" 
+					       class="btn-action" 
+					       title="Kirim Email ke <?= html_escape($user_db->email) ?>" 
+					       data-bs-toggle="tooltip" 
+					       data-bs-placement="bottom">
+					        <i class="ri-mail-line"></i>
+					    </a>
+
+					    <a href="javascript:void(0);" 
+					       onclick="activateEditTab()" 
+					       class="btn-action" 
+					       title="Edit Profil Saya" 
+					       data-bs-toggle="tooltip" 
+					       data-bs-placement="bottom">
+					        <i class="ri-settings-3-line"></i>
+					    </a>
+
+					    <a href="javascript:void(0);" 
+					       class="btn-action" 
+					       title="Bergabung sejak: <?= date('d F Y', strtotime($user_db->created_at ?? date('Y-m-d'))) ?>" 
+					       data-bs-toggle="tooltip" 
+					       data-bs-placement="bottom" 
+					       style="cursor: help;">
+					        <i class="ri-time-line"></i>
+					    </a>
 					</div>
 				</div>
 
 				<div class="card-footer bg-white border-0 text-center pb-4">
-					<small class="text-muted">Member since: <?= date('F Y', strtotime($user_db->created_at ?? date('Y-m-d'))); ?></small>
+					<small class="text-muted">Member sejak: <?= date('F Y', strtotime($user_db->created_at ?? date('Y-m-d'))); ?></small>
 				</div>
 			</div>
 		</div>
@@ -322,8 +344,9 @@
 	</div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="<?= base_url('assets/js/jquery-3.6.0.min.js') ?>"></script>
+<script src="<?= base_url('assets/js/sweetalert.js') ?>"></script>
 
 <script>
 // 1. Preview Gambar Lokal
@@ -431,4 +454,24 @@ $('#formProfile').on('submit', function(e) {
       	}
       });
     });
+
+		// Fungsi untuk pindah ke Tab Edit Profile
+		function activateEditTab() {
+		    // Cari tombol trigger tab edit
+		    const triggerEl = document.querySelector('button[data-bs-target="#edit"]');
+		    // Inisialisasi tab Bootstrap
+		    const tab = new bootstrap.Tab(triggerEl);
+		    // Tampilkan tab
+		    tab.show();
+		    // Scroll sedikit agar user fokus ke form
+		    document.querySelector('.nav-tabs-custom').scrollIntoView({ behavior: 'smooth' });
+		}
+
+		// Inisialisasi Tooltip Bootstrap (Agar title muncul cantik)
+		document.addEventListener('DOMContentLoaded', function () {
+		    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+		    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+		        return new bootstrap.Tooltip(tooltipTriggerEl)
+		    })
+		});
   </script>

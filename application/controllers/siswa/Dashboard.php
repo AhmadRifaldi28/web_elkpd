@@ -16,7 +16,7 @@ class Dashboard extends CI_Controller {
 		$user_id = $this->session->userdata('user_id');
 
     // Ambil daftar sekolah dari model
-		$data['sekolah_list'] = $this->Murid_model->get_sekolah_by_guru($user_id);
+		$data['kelas_murid'] = $this->Murid_model->get_sekolah_by_guru($user_id);
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar');
 		$this->load->view('dashboard/siswa', $data);

@@ -11,18 +11,23 @@
 --------------------------------------------------------------*/
 /* 1. Definisi Warna Dasar (Root Variables) */
 :root {
-  scroll-behavior: smooth;
-  /* Warna utama (Violet) */
-  --bd-violet-bg: #712cf9; 
-  --bd-violet-rgb: 113, 44, 249;
-  
-  /* Warna Accent (Kuning/Orange contohnya) */
-  --bd-accent: #ffe484;
-  --bd-accent-rgb: 255, 228, 132;
-  
-  /* Warna text dark */
-  --bd-dark: #212529; 
-}
+    scroll-behavior: smooth;
+    /* Warna utama (Violet) */
+    --bd-violet-bg: #712cf9; 
+    --bd-violet-rgb: 113, 44, 249;
+    
+    /* Warna Accent */
+    --bd-accent: #ffe484;
+    --bd-accent-rgb: 255, 228, 132;
+    
+    /* Warna text dark */
+    --bd-dark: #212529; 
+
+    /* High Contrast Blue Gradient (> Ratio 9:1 with white text) */
+    --bg-header-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); 
+    /* Alternatif Deep Blue yang lebih "hidup" tapi tetap high contrast */
+    --bg-deep-blue: linear-gradient(45deg, #003366, #004080);
+  }
 
 body {
   font-family: "Open Sans", sans-serif;
@@ -512,12 +517,12 @@ h6 {
   width: 100%;
 }
 
-.header .search-form input:focus,
+/*.header .search-form input:focus,
 .header .search-form input:hover {
   outline: none;
   box-shadow: 0 0 10px 0 rgba(1, 41, 112, 0.15);
   border: 1px solid rgba(1, 41, 112, 0.3);
-}
+}*/
 
 .header .search-form button {
   border: 0;
@@ -527,7 +532,8 @@ h6 {
 }
 
 .header .search-form button i {
-  color: #012970;
+  /*color: #012970;*/
+  color: #d3e3ff;
 }
 
 /*--------------------------------------------------------------
@@ -679,7 +685,7 @@ h6 {
   left: 0;
   bottom: 0;
   /*width: 300px;*/
-  width: 202px;
+  width: 222px;
   z-index: 996;
   transition: all 0.3s;
   padding: 20px;
@@ -693,7 +699,7 @@ h6 {
 @media (max-width: 1199px) {
   .sidebar {
     /*left: -300px;*/
-    left: -202px;
+    left: -222px;
   }
 }
 
@@ -712,7 +718,7 @@ h6 {
   #main,
   #footer {
     /*margin-left: 300px;*/
-    margin-left: 202px;
+    margin-left: 222px;
   }
 }
 
@@ -731,7 +737,7 @@ h6 {
 
   .toggle-sidebar .sidebar {
     /*left: -300px;*/
-    left: -202px;
+    left: -222px;
   }
 }
 

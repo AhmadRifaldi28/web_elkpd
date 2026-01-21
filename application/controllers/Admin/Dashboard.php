@@ -116,7 +116,7 @@ class Dashboard extends CI_Controller {
 		$data['teachers'] = $this->Guru_model->get_all_with_user_and_school();
 		$data['schools'] = $this->Sekolah_model->get_all();
 		$data['user'] = $this->session->userdata();
-		$data['title'] = 'Kelola Guru';
+		$data['title'] = 'Manajemen Guru';
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar');
@@ -142,12 +142,17 @@ class Dashboard extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('username','Username','required');
 		$this->form_validation->set_rules('name','Nama','required|trim');
+	  $id = $this->input->post('id', TRUE); // teacher id for update
+	  if (!$id) {
+			$this->form_validation->set_rules('email','Email','required|trim|valid_email|is_unique[users.email]', [
+				'is_unique' => 'Email sudah terdaftar!'
+			]);
+	  }
 
 		if ($this->form_validation->run() === FALSE) {
 			echo json_encode(['status'=>'error','message'=>validation_errors(), 'csrf_hash' => $this->security->get_csrf_hash()]);
 			return;
 		}
-	    $id = $this->input->post('id', TRUE); // teacher id for update
 	    $username = $this->input->post('username', TRUE);
 	    $email = $this->input->post('email', TRUE);
 	    $password = $this->input->post('password', TRUE);
@@ -215,7 +220,7 @@ class Dashboard extends CI_Controller {
     {
         // $data['students'] tidak diperlukan lagi, data dimuat oleh getStudentList()
         $data['user'] = $this->session->userdata();
-        $data['title'] = 'Kelola Murid';
+        $data['title'] = 'Manajemen Murid';
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');

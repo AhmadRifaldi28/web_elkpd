@@ -22,7 +22,7 @@ class Profile extends CI_Controller
       {
       	$user_id = $this->session->userdata('user_id');
 
-      	$data['title'] = 'Profile Saya';
+      	$data['title'] = 'Profile';
         // Ambil data terbaru dari DB, jangan hanya dari session untuk isian form
       	$data['user_db']  = $this->User_model->get_profile($user_id);
 
@@ -82,7 +82,9 @@ class Profile extends CI_Controller
 
       	if ($this->input->post('password')) {
       		$this->form_validation->set_rules('password', 'Password', 'min_length[8]');
-      		$this->form_validation->set_rules('password_confirm', 'Konfirmasi Password', 'matches[password]');
+      		$this->form_validation->set_rules('password_confirm', 'Konfirmasi Password', 'matches[password]', [
+            'matches' => 'Password tidak sama!',
+          ]);
       	}
 
         // Jika validasi form gagal

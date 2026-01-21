@@ -161,16 +161,17 @@ export default class CrudHandler {
         const id = btn.dataset.id;
         const dataName = btn.dataset[this.config.deleteNameField] || '';
         const entity = this.config.entityName || 'Data';
-        const text = `${entity} "${dataName}" akan dihapus permanen!`;
+        // const text = `${entity} "${dataName}" akan dihapus permanen!`;
+        const text = `Anda sedang mencoba menghapus "${dataName}" Anda tidak akan bisa mengembalikan data ini setelah menekan tombol Hapus.!`;
         Swal.fire({
-            title: 'Anda Yakin?',
+            title: 'Tunggu Sebentar...',
             text: text,
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Ya, hapus!',
-            cancelButtonText: 'Batal'
+            confirmButtonColor: '#7b0b0b',
+            cancelButtonColor: '#19334c',
+            confirmButtonText: 'Hapus data!',
+            cancelButtonText: 'Batalkan'
         }).then((result) => {
             if (result.isConfirmed) {
                 this.#executeDelete(id);

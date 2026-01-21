@@ -61,7 +61,7 @@
 </style>
 
 
-<div class="container-fluid">
+<div class="container-fluid pagetitle-hero d-flex flex-column justify-content-center">
 
     <!-- ================= HEADER HALAMAN ================= -->
     <div class="pagetitle mb-3">

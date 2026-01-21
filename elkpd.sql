@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 29, 2025 at 04:04 AM
+-- Generation Time: Jan 21, 2026 at 02:05 AM
 -- Server version: 8.0.30
 -- PHP Version: 7.4.33
 
@@ -112,7 +112,7 @@ INSERT INTO `pbl_essay_questions` (`id`, `essay_id`, `question_number`, `questio
 ('01KD0MCVRWHR27D3QB1NKKN2JA', '01KD0MAY7TN4ABV4ETC48J54DB', 1, 'siapakah yang', '2025-12-21 21:18:13'),
 ('01KD0MCVRWTVQY0F3WTDVRX2VE', '01KD0MAY7TN4ABV4ETC48J54DB', 2, 'kapankah', '2025-12-21 21:18:13'),
 ('01KD77QAEZS4Q38GRMH1DAWHSA', '01KD77PS1JNENA5SMXY1B1MHGD', 2, 'bagaimana', '2025-12-24 10:51:25'),
-('01KD77QAEZTZ5C8ZP1WC2SHB89', '01KD77PS1JNENA5SMXY1B1MHGD', 1, 'mengapa', '2025-12-24 10:51:25');
+('01KD77QAEZTZ5C8ZP1WC2SHB89', '01KD77PS1JNENA5SMXY1B1MHGD', 1, 'Mengapa', '2025-12-24 10:51:25');
 
 -- --------------------------------------------------------
 
@@ -136,7 +136,9 @@ CREATE TABLE `pbl_essay_submissions` (
 --
 
 INSERT INTO `pbl_essay_submissions` (`id`, `essay_id`, `user_id`, `submission_content`, `grade`, `feedback`, `created_at`, `updated_at`) VALUES
-('01KD25VRZG1YNFGNRMY8YTAKBC', '01KD0MAY7TN4ABV4ETC48J54DB', '01K912FR1QZHEWJ6MCVK8WEK5V', '1.dfgh\r\n2.fgh\r\n3.dfghj', 80, 'ok bagus', '2025-12-22 11:42:42', '2025-12-22 11:45:24');
+('01KD25VRZG1YNFGNRMY8YTAKBC', '01KD0MAY7TN4ABV4ETC48J54DB', '01K912FR1QZHEWJ6MCVK8WEK5V', '1.dfgh\r\n2.fgh\r\n3.dfghj', 81, 'ok bagus', '2025-12-22 11:42:42', '2025-12-29 16:42:10'),
+('01KF5NTZ7Z936WSRRZ8JPA45Y4', '01KD77PS1JNENA5SMXY1B1MHGD', '01K912FR1QZHEWJ6MCVK8WEK5V', '1. Karena\r\n2. Dengan cara', 80, 'ok', '2026-01-17 16:51:00', '2026-01-17 16:51:39'),
+('01KFAYFVZHW5AX619VD46T4ZPM', '01KD77PS1JNENA5SMXY1B1MHGD', '01K94KA9TRKC5ZEAPM3PRKVP9S', '1. Sesuatu\r\n2. Dengan demikian', 88, 'ok, bagus', '2026-01-19 17:58:25', '2026-01-19 18:04:30');
 
 -- --------------------------------------------------------
 
@@ -252,7 +254,7 @@ CREATE TABLE `pbl_observation_results` (
 --
 
 INSERT INTO `pbl_observation_results` (`id`, `observation_slot_id`, `user_id`, `score`, `feedback`, `created_at`) VALUES
-('01KD74HJ342NCA3Y0ZNP6BGCR2', '01KAJ4NJ1XTEZ89738D7997ZE0', '01K912FR1QZHEWJ6MCVK8WEK5V', 78, 'ok', '2025-12-24 09:55:51');
+('01KF56CPSDX5JDCYPP181V330A', '01KAJ4NJ1XTEZ89738D7997ZE0', '01K912FR1QZHEWJ6MCVK8WEK5V', 88, 'ok', '2026-01-17 12:21:04');
 
 -- --------------------------------------------------------
 
@@ -296,8 +298,8 @@ CREATE TABLE `pbl_observation_uploads` (
 --
 
 INSERT INTO `pbl_observation_uploads` (`id`, `observation_slot_id`, `user_id`, `file_name`, `original_name`, `description`, `created_at`) VALUES
-('01KD74GG18RMZ1W5XE5S9ANBMN', '01KAJ4NJ1XTEZ89738D7997ZE0', '01K912FR1QZHEWJ6MCVK8WEK5V', '0c5099ac7cc7c1e346511d24821e3c87.docx', 'usecase.docx', 'sdfgh', '2025-12-24 09:55:16'),
-('01KDF2FB8EMGQB42ZH3H6NRRQ7', '01KAJ4NJ1XTEZ89738D7997ZE0', '01K94KA9TRKC5ZEAPM3PRKVP9S', 'eafcb34540f7e6b3b5d03521fbb5715f.jpg', '01KCRYBV7NVJTASBSXNC69MM5H.jpg', 'tugas', '2025-12-27 11:53:37');
+('01KDF2FB8EMGQB42ZH3H6NRRQ7', '01KAJ4NJ1XTEZ89738D7997ZE0', '01K94KA9TRKC5ZEAPM3PRKVP9S', 'eafcb34540f7e6b3b5d03521fbb5715f.jpg', '01KCRYBV7NVJTASBSXNC69MM5H.jpg', 'tugas', '2025-12-27 11:53:37'),
+('01KF2FFY83CTGT3092JVQCWHPP', '01KAJ4NJ1XTEZ89738D7997ZE0', '01K912FR1QZHEWJ6MCVK8WEK5V', '3840f304fab19982b25c7e0d8a3d2f38.jpg', 'product-1.jpg', 'tugas', '2026-01-16 11:02:24');
 
 -- --------------------------------------------------------
 
@@ -319,7 +321,7 @@ CREATE TABLE `pbl_orientasi` (
 --
 
 INSERT INTO `pbl_orientasi` (`id`, `class_id`, `title`, `reflection`, `file_path`, `created_at`) VALUES
-('01KCY0YXK2H849VN0N0R1BJS21', '01K92EK6YBT0FSC80TDYYD3ZN2', 'test', 'test', 'uploads/pbl/01KDEXWJ3RS7DK33FTPWHQMRGD.jpg', '2025-12-20 21:00:04');
+('01KCY0YXK2H849VN0N0R1BJS21', '01K92EK6YBT0FSC80TDYYD3ZN2', 'Materi', 'Pertemuan 1', 'uploads/pbl/01KF66G2ZG0BPXCHQJKZKPZPYA.pdf', '2025-12-20 21:00:04');
 
 -- --------------------------------------------------------
 
@@ -341,7 +343,7 @@ CREATE TABLE `pbl_quizzes` (
 
 INSERT INTO `pbl_quizzes` (`id`, `class_id`, `title`, `description`, `created_at`) VALUES
 ('01K9RB3FNYYXBC5SBAT705K85N', '01K92EK6YBT0FSC80TDYYD3ZN2', 'kuis', 'kuis ipas', '2025-11-11 09:14:48'),
-('01KD74N5NJWSJ7H86KVYY3Y8WQ', '01K92EK6YBT0FSC80TDYYD3ZN2', 'kuis kedua', 'kuis', '2025-12-24 09:57:49');
+('01KD74N5NJWSJ7H86KVYY3Y8WQ', '01K92EK6YBT0FSC80TDYYD3ZN2', 'kuis kedua', 'Latihan kuis', '2025-12-24 09:57:49');
 
 -- --------------------------------------------------------
 
@@ -374,7 +376,15 @@ INSERT INTO `pbl_quiz_answers` (`id`, `result_id`, `question_id`, `selected_opti
 ('01KD7X89SNC544GEZA1P808C96', '01KD7X89SNC4BGCPQMV7A5GBW0', '01KD74NS1TVEKSMVDBQ926B430', 'C', 1, '2025-12-24 17:07:42'),
 ('01KD7X89SNXEXAFKFQXAMG7Y9Y', '01KD7X89SNC4BGCPQMV7A5GBW0', '01KD74NS1T2H06XJBZ7T1YMAEH', 'C', 1, '2025-12-24 17:07:42'),
 ('01KDCVSC2JBJ2X16AV1R5WGQ95', '01KDCVSC2JPS0R1QDSAWCKNNFV', '01KDCVPPPKPEN54E7V2N5FG5C6', 'C', 1, '2025-12-26 15:18:16'),
-('01KDCVSC2JG0FD0M3HAZS8B0V6', '01KDCVSC2JPS0R1QDSAWCKNNFV', '01KDCVPPPK8J234A82672E8BDX', 'C', 1, '2025-12-26 15:18:16');
+('01KDCVSC2JG0FD0M3HAZS8B0V6', '01KDCVSC2JPS0R1QDSAWCKNNFV', '01KDCVPPPK8J234A82672E8BDX', 'C', 1, '2025-12-26 15:18:16'),
+('01KDMQZJV23BAYFP244EXPZY1T', '01KDMQZJV1BZS35HMQ0BKR405S', '01KD74NS1T2H06XJBZ7T1YMAEH', 'C', 1, '2025-12-29 16:45:41'),
+('01KDMQZJV2BF8N7QTCDS1MF8E3', '01KDMQZJV1BZS35HMQ0BKR405S', '01KD74NS1TVEKSMVDBQ926B430', 'C', 1, '2025-12-29 16:45:41'),
+('01KF0ZRZSR32853YNDH80G27N0', '01KF0ZRZSRPYEEKEZWT43FNRRA', '01KD74NS1TVEKSMVDBQ926B430', 'C', 1, '2026-01-15 21:08:29'),
+('01KF0ZRZSRP0VG7HT9EGPJ50C8', '01KF0ZRZSRPYEEKEZWT43FNRRA', '01KD74NS1T2H06XJBZ7T1YMAEH', 'D', 0, '2026-01-15 21:08:29'),
+('01KF5M4W4E7M6R2TJQK6VE7X14', '01KF5M4W4ESE463TGNYWFYFE2H', '01KD74NS1T2H06XJBZ7T1YMAEH', 'D', 0, '2026-01-17 16:21:27'),
+('01KF5M4W4ERAS25BDW8DXF9S9M', '01KF5M4W4ESE463TGNYWFYFE2H', '01KF103TXPNA1JE4WKBM59ATXS', 'A', 1, '2026-01-17 16:21:27'),
+('01KF8NN1FKE6NCDJB03CEX2H5T', '01KF8NN1FK9MK1W5GAKVSHD8R1', '01KF103TXPNA1JE4WKBM59ATXS', 'A', 1, '2026-01-18 20:45:29'),
+('01KF8NN1FKQ3MPVQT1614N2XEH', '01KF8NN1FK9MK1W5GAKVSHD8R1', '01KF62SHW2T47P7YABD3P55S13', 'C', 1, '2026-01-18 20:45:29');
 
 -- --------------------------------------------------------
 
@@ -401,8 +411,8 @@ CREATE TABLE `pbl_quiz_questions` (
 INSERT INTO `pbl_quiz_questions` (`id`, `quiz_id`, `question_text`, `option_a`, `option_b`, `option_c`, `option_d`, `correct_answer`, `created_at`) VALUES
 ('01K9RB47XCXWVSSEBMT8NRTNC6', '01K9RB3FNYYXBC5SBAT705K85N', 'siapa', 'Saya', 'Aku', 'Dia', 'Kamu', 'C', '2025-11-11 09:15:13'),
 ('01K9RB47XCZ8MQ9BQQXK134F59', '01K9RB3FNYYXBC5SBAT705K85N', '1+1=', '1', '0', '2', '3', 'C', '2025-11-11 09:15:13'),
-('01KD74NS1T2H06XJBZ7T1YMAEH', '01KD74N5NJWSJ7H86KVYY3Y8WQ', 'siapa', 'Saya', 'Aku', 'Dia', 'Kamu', 'C', '2025-12-24 09:58:09'),
-('01KD74NS1TVEKSMVDBQ926B430', '01KD74N5NJWSJ7H86KVYY3Y8WQ', '1+1=', '1', '0', '2', '3', 'C', '2025-12-24 09:58:09');
+('01KF103TXPNA1JE4WKBM59ATXS', '01KD74N5NJWSJ7H86KVYY3Y8WQ', '1 + 1 = ', '2', '1', '3', '4', 'A', '2026-01-15 21:14:24'),
+('01KF62SHW2T47P7YABD3P55S13', '01KD74N5NJWSJ7H86KVYY3Y8WQ', 'siapa', 'Saya', 'Aku', 'Dia', 'Kamu', 'C', '2026-01-17 20:37:25');
 
 -- --------------------------------------------------------
 
@@ -426,8 +436,8 @@ CREATE TABLE `pbl_quiz_results` (
 
 INSERT INTO `pbl_quiz_results` (`id`, `quiz_id`, `user_id`, `score`, `total_correct`, `total_questions`, `created_at`) VALUES
 ('01KCY1FRNV152S9NYA8AP4J1SB', '01K9RB3FNYYXBC5SBAT705K85N', '01K94KA9TRKC5ZEAPM3PRKVP9S', 100, 2, 2, '2025-12-20 21:09:16'),
-('01KD74Q2XENEDQG40MQNBVB8KC', '01KD74N5NJWSJ7H86KVYY3Y8WQ', '01K912FR1QZHEWJ6MCVK8WEK5V', 100, 2, 2, '2025-12-24 09:58:52'),
-('01KD7X89SNC4BGCPQMV7A5GBW0', '01KD74N5NJWSJ7H86KVYY3Y8WQ', '01K94KA9TRKC5ZEAPM3PRKVP9S', 100, 2, 2, '2025-12-24 17:07:42');
+('01KD7X89SNC4BGCPQMV7A5GBW0', '01KD74N5NJWSJ7H86KVYY3Y8WQ', '01K94KA9TRKC5ZEAPM3PRKVP9S', 100, 2, 2, '2025-12-24 17:07:42'),
+('01KF8NN1FK9MK1W5GAKVSHD8R1', '01KD74N5NJWSJ7H86KVYY3Y8WQ', '01K912FR1QZHEWJ6MCVK8WEK5V', 100, 2, 2, '2026-01-18 20:45:29');
 
 -- --------------------------------------------------------
 
@@ -470,7 +480,7 @@ CREATE TABLE `pbl_reflections` (
 --
 
 INSERT INTO `pbl_reflections` (`id`, `class_id`, `user_id`, `teacher_reflection`, `student_feedback`, `is_locked`, `created_at`, `updated_at`) VALUES
-('01KC6D1T5M9WEJX1CWEFMB1F4W', '01K92EK6YBT0FSC80TDYYD3ZN2', '01K912FR1QZHEWJ6MCVK8WEK5V', 'ok', 'ayo semangat', 1, '2025-12-11 16:49:36', '2025-12-27 10:43:04');
+('01KC6D1T5M9WEJX1CWEFMB1F4W', '01K92EK6YBT0FSC80TDYYD3ZN2', '01K912FR1QZHEWJ6MCVK8WEK5V', 'ok bagus', 'ayo semangat', 1, '2025-12-11 16:49:36', '2025-12-29 16:43:53');
 
 -- --------------------------------------------------------
 
@@ -546,7 +556,8 @@ INSERT INTO `pbl_tts_answers` (`id`, `result_id`, `question_id`, `user_answer`, 
 ('01KD7X9CXMPK9VZQ18EZM40WE9', '01KD7X9CXMVFM1A0TAR6EHHR5G', '01KCRCZQMC9QNDV4H0JJRCBHD9', 'MEREKA', 1, '2025-12-24 17:08:18'),
 ('01KD7X9CXMXQHZ1D81Z716JS4J', '01KD7X9CXMVFM1A0TAR6EHHR5G', '01KCY42B1K9RC45M0H9W4A8CSY', 'KALIAN', 1, '2025-12-24 17:08:18'),
 ('01KDF126T5T0J5D12QT3BMKYZZ', '01KDF126T56MY2VJN5TMRVFTBV', '01KCRCZQMC9QNDV4H0JJRCBHD9', 'MEREKA', 1, '2025-12-27 11:28:58'),
-('01KDFZC6VCT065KXYKR39S411G', '01KDFZC6VCDYZ1AM2S3ENM6XF5', '01KCRCZQMC9QNDV4H0JJRCBHD9', 'MEREKA', 1, '2025-12-27 20:18:43');
+('01KDFZC6VCT065KXYKR39S411G', '01KDFZC6VCDYZ1AM2S3ENM6XF5', '01KCRCZQMC9QNDV4H0JJRCBHD9', 'MEREKA', 1, '2025-12-27 20:18:43'),
+('01KDMR06NMP35AXDJR05Y3QR11', '01KDMR06NMXANWNWSN3KEZFF5H', '01KCRCZQMC9QNDV4H0JJRCBHD9', 'MEREKA', 1, '2025-12-29 16:46:02');
 
 -- --------------------------------------------------------
 
@@ -573,7 +584,7 @@ CREATE TABLE `pbl_tts_questions` (
 INSERT INTO `pbl_tts_questions` (`id`, `tts_id`, `number`, `direction`, `question`, `answer`, `start_x`, `start_y`, `created_at`) VALUES
 ('01KAR25DRCMG96KXHYZ8G4QK6X', '01K9BNTQP0WNJEWQ6H48J1KNJR', 1, 'across', 'Haus', 'MINUM', 1, 1, '2025-11-23 16:54:16'),
 ('01KATJT02QY755SYVEF7ENAC7J', '01K9BNTQP0WNJEWQ6H48J1KNJR', 1, 'down', 'bintang', 'MALAM', 1, 1, '2025-11-24 16:23:36'),
-('01KCRCZQMC9QNDV4H0JJRCBHD9', '01KCRCZ7Q1YD8M2JXVSX7H2G42', 1, 'across', 'Siapakah', 'MEREKA', 4, 1, '2025-12-18 16:34:47');
+('01KF633SQHNVHR5KBCNCF2NFJ0', '01KCRCZ7Q1YD8M2JXVSX7H2G42', 1, 'down', 'Ibukota Provinsi Jawa Barat', 'BANDUNG', 2, 1, '2026-01-17 20:43:01');
 
 -- --------------------------------------------------------
 
@@ -590,14 +601,6 @@ CREATE TABLE `pbl_tts_results` (
   `total_questions` int NOT NULL,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `pbl_tts_results`
---
-
-INSERT INTO `pbl_tts_results` (`id`, `tts_id`, `user_id`, `score`, `total_correct`, `total_questions`, `created_at`) VALUES
-('01KDF126T56MY2VJN5TMRVFTBV', '01KCRCZ7Q1YD8M2JXVSX7H2G42', '01K94KA9TRKC5ZEAPM3PRKVP9S', 100, 1, 1, '2025-12-27 11:28:58'),
-('01KDFZC6VCDYZ1AM2S3ENM6XF5', '01KCRCZ7Q1YD8M2JXVSX7H2G42', '01K912FR1QZHEWJ6MCVK8WEK5V', 100, 1, 1, '2025-12-27 20:18:43');
 
 -- --------------------------------------------------------
 
@@ -709,10 +712,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `role_id`, `name`, `email`, `image`, `is_active`, `created_at`) VALUES
-('01K8WAF2VCSHCNQYZQNDQ0K806', 'test', '$2y$10$ZBicPw.RXfH2mZVnD.IHruqGGg9S8pVR/cQWGOnujiryKogfnqakq', '01K8WA6A9HTVM98RYM1P5ZWNYH', 'adm', 'test@example.com', 'profile_01K8WAF2VCSHCNQYZQNDQ0K806_1766979677.jpg', 1, '2025-10-31 12:04:55'),
+('01K8WAF2VCSHCNQYZQNDQ0K806', 'test', '$2y$10$ZBicPw.RXfH2mZVnD.IHruqGGg9S8pVR/cQWGOnujiryKogfnqakq', '01K8WA6A9HTVM98RYM1P5ZWNYH', 'adm', 'test@example.com', 'profile_01K8WAF2VCSHCNQYZQNDQ0K806_1766998903.jpg', 1, '2025-10-31 12:04:55'),
 ('01K8WTRAA9YN933F4BJ2NXXNKQ', 'guru', '$2y$10$H3S1k38s5/ItrsR.6fOKI.4z74dJtcmHe/AUts9cee6T6rXYkpWJy', '01K8WA6WVXEKX7JK822G9PVZG9', 'guru_ipas', 'guru_ipas@example.com', 'foto.jpg', 1, '2025-10-31 16:49:35'),
-('01K912FR1QZHEWJ6MCVK8WEK5V', 'murid', '$2y$10$Sl7f2LZh5aRqpR1HwsGlwumimlhdRlWVrXBBCu6QlRbz8OA7APJbK', '01K8WA74MMB7VBRM1Y05NS7GNQ', 'murid', 'murid@mu.rid', 'profile_01K912FR1QZHEWJ6MCVK8WEK5V_1766980198.jpg', 1, '2025-11-02 08:21:41'),
-('01K91853JEGYFN8Z034389ETB3', 'guru_pkn', '$2y$10$BSu7zVS5g04VE8lL2rE1v.HoMMPktC87r6l/v9uAS6Bq29SSM44Uq', '01K8WA6WVXEKX7JK822G9PVZG9', 'guru PKN', 'guru@guru2.id', 'profile_01K91853JEGYFN8Z034389ETB3_1766979821.jpg', 1, '2025-11-02 10:00:43'),
+('01K912FR1QZHEWJ6MCVK8WEK5V', 'murid', '$2y$10$Sl7f2LZh5aRqpR1HwsGlwumimlhdRlWVrXBBCu6QlRbz8OA7APJbK', '01K8WA74MMB7VBRM1Y05NS7GNQ', 'murid', 'murid@mu.rid', 'profile_01K912FR1QZHEWJ6MCVK8WEK5V_1768746792.jpg', 1, '2025-11-02 08:21:41'),
+('01K91853JEGYFN8Z034389ETB3', 'guru_pkn', '$2y$10$BSu7zVS5g04VE8lL2rE1v.HoMMPktC87r6l/v9uAS6Bq29SSM44Uq', '01K8WA6WVXEKX7JK822G9PVZG9', 'guru PKN', 'guru@guru2.id', 'profile_01K91853JEGYFN8Z034389ETB3_1768796036.jpg', 1, '2025-11-02 10:00:43'),
 ('01K94KA9TRKC5ZEAPM3PRKVP9S', 'murid_2', '$2y$10$U/opFpM538ZKLQf2OSF.3evyqEERt/bA4bsxaDsWL4nFqQi1SlRIe', '01K8WA74MMB7VBRM1Y05NS7GNQ', 'murid2', 'murid@mu.rid2', 'foto.jpg', 1, '2025-11-03 17:13:31'),
 ('01K974STMBGJGP4BEC1C216M48', 'guru_ipas', '$2y$10$f0IWScMr4dFKCCb3GI1ji.30AITxeDIFA.3iuz2cKK8z38R7DBCA2', '01K8WA6WVXEKX7JK822G9PVZG9', 'guru Ipas', 'guru@guru3.id', 'foto.jpg', 1, '2025-11-04 16:57:35'),
 ('01K976AHZGDA70DMQ7M9MF6SHS', 'murid_3', '$2y$10$QpYl4IuqPUX1JXXgnhoN4OBg.nPy5Ra/9rPmEvtURp7UtkRcXqh/G', '01K8WA74MMB7VBRM1Y05NS7GNQ', 'murid3', 'murid@mu.rid3', 'profile_01K976AHZGDA70DMQ7M9MF6SHS_1766980257.jpg', 1, '2025-11-04 17:24:11'),
@@ -738,8 +741,6 @@ CREATE TABLE `user_access_menu` (
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (1, '01K8WA6A9HTVM98RYM1P5ZWNYH', 1),
-(2, '01K8WA6A9HTVM98RYM1P5ZWNYH', 2),
-(3, '01K8WA6A9HTVM98RYM1P5ZWNYH', 3),
 (4, '01K8WA6A9HTVM98RYM1P5ZWNYH', 4),
 (5, '01K8WA6WVXEKX7JK822G9PVZG9', 2),
 (6, '01K8WA74MMB7VBRM1Y05NS7GNQ', 3),
@@ -791,8 +792,8 @@ CREATE TABLE `user_sub_menu` (
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
 (1, 1, 'Dashboard Admin', 'admin/dashboard', 'bi-grid', 1),
 (2, 1, 'Kelola Sekolah', 'admin/dashboard/schools', 'bi-building', 1),
-(3, 1, 'Kelola Guru', 'admin/dashboard/teachers', 'bi-person', 1),
-(4, 1, 'Kelola Murid', 'admin/dashboard/students', 'bi-people', 1),
+(3, 1, 'Manajemen Guru', 'admin/dashboard/teachers', 'ri-team-line', 1),
+(4, 1, 'Manajemen Murid', 'admin/dashboard/students', 'ri-group-2-line', 1),
 (5, 4, 'Kelola Menu', 'menu', 'bi-folder', 1),
 (6, 4, 'Kelola Submenu', 'menu/submenu', 'bi-folder2-open', 1),
 (10, 2, 'Dashboard Guru', 'guru/dashboard', 'bi-grid', 1),
@@ -1048,7 +1049,7 @@ ALTER TABLE `user_menu`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

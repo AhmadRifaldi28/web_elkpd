@@ -1,126 +1,127 @@
-// Impor class CrudHandler
 import CrudHandler from './crud_handler.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Ambil token CSRF
     const csrfTokenEl = document.querySelector('input[name="' + window.CSRF_TOKEN_NAME + '"]');
-
-    // Cache elemen form yang akan di-disable/enable
+    
+    // Cache elemen form
     const usernameEl = document.getElementById('teacherUsername');
     const passwordEl = document.getElementById('teacherPassword');
     const passwordGroup = document.getElementById('passwordGroup');
+    const usernameHint = document.getElementById('usernameHint');
 
-    // Konfigurasi spesifik untuk modul "Guru"
+    // Helper Update Stats
+    const updateStats = () => {
+        setTimeout(() => {
+            const rows = document.querySelectorAll('#teacherTable tbody tr');
+            const count = (rows.length === 1 && rows[0].cells.length === 1) ? 0 : rows.length;
+            const statEl = document.getElementById('statTotalTeachers');
+            if(statEl) statEl.innerText = count;
+        }, 500);
+    };
+
     const teacherConfig = {
         baseUrl: window.BASE_URL,
         entityName: 'Guru',
 
-        // --- 1. Selektor DOM ---
         modalId: 'teacherModal',
         formId: 'teacherForm',
         modalLabelId: 'teacherModalLabel',
         hiddenIdField: 'teacherId',
         tableId: 'teacherTable',
         btnAddId: 'btnAddTeacher',
-        tableParentSelector: '.card-body',
+        tableParentSelector: '.teacherContainer',
 
-        // --- 2. Konfigurasi CSRF ---
         csrf: {
             tokenName: window.CSRF_TOKEN_NAME,
             tokenHash: csrfTokenEl ? csrfTokenEl.value : ''
         },
 
-        // --- 3. Endpoint URL ---
         urls: {
-            // PENTING: Anda perlu membuat endpoint ini!
             load: 'admin/dashboard/getTeacherList', 
             save: 'admin/dashboard/teacher_save',
-            // 'delete' adalah string karena ID dikirim via POST body
             delete: 'admin/dashboard/teacher_delete' 
         },
-        deleteMethod: 'POST', // WAJIB
+        deleteMethod: 'POST',
 
-        // --- 4. Teks Spesifik ---
         modalTitles: {
             add: 'Tambah Guru Baru',
             edit: 'Edit Data Guru'
         },
-        deleteNameField: 'name', // data-name="..."
+        deleteNameField: 'name',
 
-        // --- 5. Logika Spesifik (Callback) ---
-
-        /**
-         * Mapper data JSON ke array untuk simple-datatable.
-         * (Asumsi JSON Anda memiliki field 'name', 'username', 'email', 'school_name')
-         */
+        // MAPPER DATA (Updated Layout & Remix Icons)
         dataMapper: (teacher, index) => {
+            const emailText = teacher.email ? `<div class="text-muted small"><i class="ri-mail-line me-1"></i>${teacher.email}</div>` : '<span class="text-muted small">-</span>';
+            
             return [
-                index + 1,
-                teacher.name,       // dari tabel user
-                teacher.username,   // dari tabel user
-                teacher.email || '-', // dari tabel user
-                teacher.school_name || 'N/A', // dari join tabel school
+                `<div class="text-center fw-bold text-secondary">${index + 1}</div>`,
+                `<div class="d-flex align-items-center">
+                    <div class="avatar-sm bg-light rounded-circle text-primary d-flex align-items-center justify-content-center me-2" style="width:35px;height:35px">
+                        <i class="ri-user-2-fill fs-5"></i>
+                    </div>
+                    <span class="fw-bold text-dark">${teacher.name}</span>
+                 </div>`,
+                `<div>
+                    <div class="fw-bold text-primary small">@${teacher.username}</div>
+                    ${emailText}
+                 </div>`,
+                `<span class="badge text-info border border-info">
+                    ${teacher.school_name || 'N/A'}
+                 </span>`,
                 `
-                <button class="btn btn-warning btn-sm btn-edit" 
-                    data-id="${teacher.id}" 
-                    data-name="${teacher.name}"
-                    data-username="${teacher.username}"
-                    data-email="${teacher.email || ''}"
-                    data-school-id="${teacher.school_id}">
-                    <i class="fas fa-edit"></i> Edit
-                </button>
-                <button class="btn btn-danger btn-sm btn-delete" 
-                    data-id="${teacher.id}" 
-                    data-name="${teacher.name}">
-                    <i class="fas fa-trash"></i> Hapus
-                </button>
+                <div class="text-center p-1">
+                    <button class="btn btn-sm btn-outline-warning btn-edit me-1" 
+                        data-id="${teacher.id}" 
+                        data-name="${teacher.name}"
+                        data-username="${teacher.username}"
+                        data-email="${teacher.email || ''}"
+                        data-school-id="${teacher.school_id}"
+                        title="Ubah Data">
+                        Ubah
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger btn-delete border-0" 
+                        data-id="${teacher.id}" 
+                        data-name="${teacher.name}"
+                        title="Hapus Data">
+                        Hapus
+                    </button>
+                </div>
                 `
             ];
         },
 
-        /**
-         * Pengisi form saat tombol "Edit" diklik.
-         * Sesuai controller, kita disable username & password.
-         */
         formPopulator: (form, data) => {
-            // Isi data
             form.querySelector('#teacherId').value = data.id;
             form.querySelector('#teacherName').value = data.name;
             form.querySelector('#teacherSchool').value = data.schoolId;
             form.querySelector('#teacherEmail').value = data.email;
 
-            // Logika mode EDIT:
-            // Isi username tapi disable
+            // Mode Edit: Disable Username & Password
             usernameEl.value = data.username;
-            usernameEl.readonly = true; 
-            usernameEl.required = false; // Tidak wajib
+            usernameEl.readonly = true;
+            usernameEl.classList.add('bg-light');
+            usernameHint.style.display = 'none'; // Sembunyikan hint
             
-            // Sembunyikan/kosongkan & disable password
             passwordEl.value = '';
             passwordEl.disabled = true;
-            passwordEl.required = false;
-            passwordGroup.style.display = 'none'; // Sembunyikan grup password
+            passwordGroup.style.display = 'none';
         },
 
-        /**
-         * Hook opsional: Dipanggil saat modal "Tambah" dibuka.
-         * Kita pastikan username & password bisa diisi.
-         */
         onAdd: (form) => {
-            // Logika mode TAMBAH:
-            // Pastikan field bisa diisi
-            usernameEl.disabled = false;
-            usernameEl.required = true; // Wajib
-            
+            // Mode Tambah: Enable Username & Password
+            usernameEl.readonly = false;
+            usernameEl.classList.remove('bg-light');
+            usernameEl.value = '';
+            usernameHint.style.display = 'block';
+
             passwordEl.disabled = false;
-            // Password tidak 'required' karena controller punya default
-            passwordEl.required = false; 
-            passwordGroup.style.display = 'block'; // Tampilkan grup password
-        }
+            passwordGroup.style.display = 'block';
+        },
+
+        onDataLoaded: updateStats
     };
 
-    // Inisialisasi handler
     const teacherHandler = new CrudHandler(teacherConfig);
     teacherHandler.init();
 });

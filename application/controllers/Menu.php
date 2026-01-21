@@ -13,7 +13,8 @@ class Menu extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Kelola Menu';
-		$data['user'] = $this->db->get_where('users', ['username' => $this->session->userdata('username')])->row_array();
+		// $data['user'] = $this->db->get_where('users', ['username' => $this->session->userdata('username')])->row_array();
+		$data['user'] = $this->session->userdata();
 
 		$data['menu'] = $this->db->get('user_menu')->result_array();
 		$this->load->view('templates/header', $data);
@@ -102,7 +103,8 @@ class Menu extends CI_Controller
 	public function submenu()
 	{
 		$data['title'] = 'Kelola Submenu';
-		$data['user'] = $this->db->get_where('users', ['username' => $this->session->userdata('username')])->row_array();
+		// $data['user'] = $this->db->get_where('users', ['username' => $this->session->userdata('username')])->row_array();
+		$data['user'] = $this->session->userdata();
 
 		$data['subMenu'] = $this->menu->getAllSubmenu();;
 		$data['menu'] = $this->db->get('user_menu')->result_array();
