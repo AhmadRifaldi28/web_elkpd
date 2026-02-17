@@ -1,239 +1,214 @@
-<style>
-/* ===== TABLE RESPONSIVE PBL ===== */
-#quizTable,
-#ttsTable {
-    min-width: 720px !important;
-}
+<?php if ($this->session->userdata('role') == 'Siswa'): ?>
+    <style>
+        #main { background: url('<?= base_url("assets/img/tema_2.png"); ?>') no-repeat top center !important; }
+        /* Sembunyikan Judul Bawaan Template */
+        .pagetitle { display: none !important; }
 
-#quizTable thead th,
-#ttsTable thead th {
-    background: #e0efff !important;
-}
+    </style>
+    <?php endif ?>
 
-.table-responsive {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch;
-}
+    <link rel="stylesheet" href="<?= base_url('assets/css/pbl.css'); ?>">
 
-.action {
-    width: 20%;
-}
+    <style>
+        .page-spacer {height: 19vw;}
+    </style>
 
-/* Responsive Styles */
-@media (max-width: 1051px) {
-    .action {
-        width: 28%;
-    }
-}
+    <div class="container-fluid">
 
-@media (max-width: 768px) {
+    <?php if ($this->session->userdata('role') == 'Siswa'): ?>
+	    <div class="d-flex justify-content-center">
+	        <div class="fun-header">
+	            <h1 class="fun-title">
+	                <i class="ri-palette-fill text-warning me-2"></i> Organisasi Belajar
+	            </h1>
+	        </div>
+	    </div>
+		<?php endif ?>
 
-    #quizTable thead th,
-    #ttsTable thead th {
-        position: sticky;
-        top: 0;
-        z-index: 2;
-    }
-}
+    <div class="kids-panel">
+        
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+            <a href="<?= base_url($url_name . '/pbl/index/' . $class_id) ?>" class="btn btn-fun btn-yellow">
+                <i class="ri-arrow-go-back-line"></i> Kembali
+            </a>
+            
+            <a href="<?= base_url($url_name . '/pbl/tahap3/' . $class_id); ?>" class="btn btn-fun btn-blue">
+                Tahap 3 <i class="ri-survey-line"></i>
+            </a>
+        </div>
 
-@media (max-width: 576px) {
-    #quizTable td {
-        white-space: nowrap;
-    }
-}
-</style>
+        <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>"
+            value="<?= $this->security->get_csrf_hash(); ?>">
+        <input type="hidden" id="classIdHidden" value="<?= $class_id; ?>">
 
-<div class="container-fluid">
-    <div class="pagetitle mb-3">
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="<?= base_url($url_name . '/dashboard/class_detail/' . $class_id) ?>">
-                        PBL
-                    </a>
-                </li>
-                <li class="breadcrumb-item active">Organisasi Belajar</li>
-            </ol>
-        </nav>
-    </div>
+        <div class="alert alert-info border border-info border-2 rounded-4 d-flex align-items-center mb-4 shadow-sm p-3">
+            <i class="ri-lightbulb-flash-fill fs-3 me-3"></i>
+            <div>
+                Pilih salah satu kegiatan di bawah ini: <strong>Kuis</strong> untuk latihan soal, atau <strong>Teka-Teki Silang</strong> untuk bermain kata!
+            </div>
+        </div>
 
-    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
-        <a href="<?= base_url($url_name . '/pbl/index/' . $class_id) ?>" class="btn btn-secondary">
-            <i class="ri-arrow-go-back-line"></i> Kembali
-        </a>
-        <a href="<?= base_url($url_name . '/pbl/tahap3/' . $class_id); ?>" class="btn btn-outline-primary me-1">
-            <i class="ri-survey-line"></i> Tahap 3
-        </a>
-    </div>
-
-    <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>"
-        value="<?= $this->security->get_csrf_hash(); ?>">
-    <input type="hidden" id="classIdHidden" value="<?= $class_id; ?>">
-
-    <div class="alert alert-info border-0 shadow-sm">
-        <i class="bi bi-info-circle-fill me-2"></i>
-        Halaman ini menampilkan daftar <span id="info-label" class="fw-bold">kuis</span>.
-        Klik tombol <strong>"Detail"</strong> untuk melihat soal.
-    </div>
-
-    <ul class="nav nav-tabs mb-3" id="pblTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="quiz-tab" data-bs-toggle="tab" data-bs-target="#quiz" type="button"
-                role="tab">Kuis</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="tts-tab" data-bs-toggle="tab" data-bs-target="#tts" type="button"
-                role="tab">Teka-Teki Silang</button>
-        </li>
-    </ul>
-
-    <div class="tab-content" id="pblTabContent">
-        <div class="tab-pane fade show active" id="quiz" role="tabpanel">
-            <div class="d-flex justify-content-between mb-2">
-                <h5>
-                    <i class="ri-question-line me-1"></i>
-                    <strong class="text-dark">Daftar Kuis</strong>
-                </h5>
-                <div class="d-flex gap-2 m-2">
-                    <?php if ($url_name == 'guru'): ?>
-                    <button class="btn btn-success btn-sm" id="btnAddQuiz">
-                        <i class="bi bi-plus-circle me-1"></i> Tambah Kuis
+        <div class="text-center mb-4">
+            <ul class="nav nav-pills-custom" id="pblTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="quiz-tab" data-bs-toggle="tab" data-bs-target="#quiz" type="button" role="tab">
+                        <i class="ri-question-line fs-4 me-1"></i> KUIS
                     </button>
-                    <a href="<?= site_url('guru/pbl_kuis/panduan_tahap2'); ?>" class="btn btn-info btn-sm">
-                        Panduan Tahap 2
-                    </a>
-                    <?php endif; ?>
-
-                    <?php if ($url_name == 'siswa'): ?>
-                    <a href="<?= site_url('siswa/pbl_kuis/panduan_tahap2'); ?>" class="btn btn-info btn-sm">
-                        Panduan Kuis Evaluasi
-                    </a>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <div class="table-responsive">
-                <table class="table table-bordered" id="quizTable">
-                    <thead class="table-light">
-                        <tr>
-                            <th style="width:60px">No</th>
-                            <th>Judul</th>
-                            <th>Deskripsi</th>
-                            <th class="action">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tts-tab" data-bs-toggle="tab" data-bs-target="#tts" type="button" role="tab">
+                        <i class="bi bi-dice-3-fill me-1"></i> TEKA-TEKI SILANG
+                    </button>
+                </li>
+            </ul>
         </div>
 
-        <div class="tab-pane fade" id="tts" role="tabpanel">
-            <div class="d-flex justify-content-between mb-2">
-                <h5>
-                    <i class="bi bi-dice-3-fill me-1"></i>
-                    <strong class="text-dark">Daftar Teka-Teki Silang</strong>
-                </h5>
-                <?php if ($is_admin_or_guru): ?>
-                <div class="d-flex gap-2">
-                    <button class="btn btn-success btn-sm" id="btnAddTts"><i class="bi bi-plus-circle me-1"></i>
-                        Tambah TTS</button>
-                    <a href="<?= site_url('guru/Tts/panduan_tahap2_tts'); ?>" class="btn btn-info btn-sm">
-                        Panduan TTS
-                    </a>
+        <div class="tab-content" id="pblTabContent">
+            
+            <div class="tab-pane fade show active" id="quiz" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                    <h5 class="fw-bold text-dark-blue m-0">
+                        <i class="ri-question-line fs-4 me-1"></i>
+                     Daftar Kuis</h5>
+                    
+                    <div class="d-flex gap-2">
+                        <?php if ($url_name == 'guru'): ?>
+                            <button class="btn btn-fun btn-green" id="btnAddQuiz">
+                                <i class="ri-add-circle-fill"></i> Buat Kuis
+                            </button>
+                            <a href="<?= site_url('guru/pbl_kuis/panduan_tahap2'); ?>" class="btn btn-fun btn-cyan">
+                                <i class="ri-information-line fs-5"></i> Panduan
+                            </a>
+                        <?php endif; ?>
+
+                        <?php if ($url_name == 'siswa'): ?>
+                            <a href="<?= site_url('siswa/pbl_kuis/panduan_tahap2'); ?>" class="btn btn-fun btn-cyan">
+                                <i class="ri-information-line fs-5"></i> Panduan Kuis
+                            </a>
+                        <?php endif; ?>
+                    </div>
                 </div>
-                <?php endif; ?>
-                <?php if ($url_name == 'siswa'): ?>
-                <a href="<?= site_url('siswa/pbl_tts/panduan_tahap2_tts'); ?>" class="btn btn-info btn-sm">
-                    Panduan Teka-Teki Silang
-                </a>
-                <?php endif; ?>
+
+                <div class="table-responsive">
+                    <table class="table table-pbl table-custom" id="quizTable">
+                        <thead>
+                            <tr>
+                                <th width="60" class="text-center">No</th>
+                                <th>Nama Kuis</th>
+                                <th>Keterangan</th>
+                                <th class="text-center">Mulai</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
-            <div class="table-responsive">
-                <table class="table table-bordered" id="ttsTable">
-                    <thead class="table-light">
-                        <tr>
-                            <th style="width:60px">No</th>
-                            <th>Judul</th>
-                            <th>Grid</th>
-                            <th class="action">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+
+            <div class="tab-pane fade" id="tts" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                    <h5 class="fw-bold text-dark-blue m-0"> 
+                        <i class="bi bi-dice-3-fill me-1"></i>
+                    Daftar TTS</h5>
+                    
+                    <div class="d-flex gap-2">
+                        <?php if ($is_admin_or_guru): ?>
+                            <button class="btn btn-fun btn-green" id="btnAddTts">
+                                <i class="ri-add-circle-fill"></i> Buat TTS
+                            </button>
+                            <a href="<?= site_url('guru/Tts/panduan_tahap2_tts'); ?>" class="btn btn-fun btn-cyan">
+                                <i class="ri-information-line fs-5"></i> Panduan
+                            </a>
+                        <?php endif; ?>
+                        
+                        <?php if ($url_name == 'siswa'): ?>
+                            <a href="<?= site_url('siswa/pbl_tts/panduan_tahap2_tts'); ?>" class="btn btn-fun btn-cyan">
+                                <i class="ri-information-line fs-5"></i> Panduan TTS
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-pbl table-custom" id="ttsTable">
+                        <thead>
+                            <tr>
+                                <th width="60" class="text-center">No</th>
+                                <th>Judul TTS</th>
+                                <th>Grid</th>
+                                <th class="text-center">Main</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-    </div>
+
+        </div> 
+    </div> 
+    <div class="page-spacer"></div>
+
 </div>
 
-<div class="modal fade" id="quizModal" tabindex="-1" aria-labelledby="quizModalLabel" aria-hidden="true">
+<div class="modal fade" id="quizModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content shadow-lg border-0">
+        <div class="modal-content rounded-4 border-0">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title fw-bold" id="quizModalLabel">📝 Form Kuis Baru</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
             <form id="quizForm" autocomplete="off">
-
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title" id="quizModalLabel">Form Kuis</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
+                <div class="modal-body p-4">
                     <input type="hidden" name="id" id="quizId">
                     <input type="hidden" name="class_id" id="quizClassId" value="<?= $class_id; ?>">
 
                     <div class="mb-3">
-                        <label for="quizTitle" class="form-label">Judul Kuis</label>
-                        <input type="text" name="title" id="quizTitle" class="form-control" required>
+                        <label class="form-label fw-bold">Nama Kuis</label>
+                        <input type="text" name="title" id="quizTitle" class="form-control rounded-3" required>
                     </div>
                     <div class="mb-3">
-                        <label for="quizDescription" class="form-label">Deskripsi</label>
-                        <textarea name="description" id="quizDescription" class="form-control" rows="3"></textarea>
+                        <label class="form-label fw-bold">Deskripsi Singkat</label>
+                        <textarea name="description" id="quizDescription" class="form-control rounded-3" rows="3"></textarea>
                     </div>
                 </div>
-
-                <div class="modal-footer bg-light">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-success">Simpan</button>
+                <div class="modal-footer bg-light border-0">
+                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-success rounded-pill px-4">Simpan</button>
                 </div>
-
             </form>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="ttsModal" tabindex="-1" aria-labelledby="ttsModalLabel" aria-hidden="true">
+<div class="modal fade" id="ttsModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content shadow-lg border-0">
+        <div class="modal-content rounded-4 border-0">
+            <div class="modal-header bg-warning text-white">
+                <h5 class="modal-title fw-bold" id="ttsModalLabel"> Form Teka-Teki Silang</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
             <form id="ttsForm" autocomplete="off">
-
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title mb-0" id="ttsModalLabel">Form Teka-Teki Silang</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
+                <div class="modal-body p-4">
                     <input type="hidden" name="id" id="ttsId">
                     <input type="hidden" name="class_id" id="ttsClassId" value="<?= $class_id; ?>">
 
                     <div class="mb-3">
-                        <label for="ttsTitle" class="form-label">Judul TTS</label>
-                        <input type="text" name="title" id="ttsTitle" class="form-control" required>
+                        <label class="form-label fw-bold">Judul TTS</label>
+                        <input type="text" name="title" id="ttsTitle" class="form-control rounded-3" required>
                     </div>
                     <div class="mb-3">
-                        <label for="ttsGridData" class="form-label">Data Grid (8-25)</label>
-                        <input type="number" name="grid_data" id="ttsGridData" class="form-control">
+                        <label class="form-label fw-bold">Ukuran Kotak (Grid)</label>
+                        <input type="number" name="grid_data" id="ttsGridData" class="form-control rounded-3" placeholder="Contoh: 10 (Maks 25)">
+                        <div class="form-text text-muted small">Masukkan angka 8 sampai 25.</div>
                     </div>
                 </div>
-
-                <div class="modal-footer bg-light">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-success">Simpan</button>
+                <div class="modal-footer bg-light border-0">
+                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-warning text-white rounded-pill px-4">Simpan</button>
                 </div>
-
             </form>
         </div>
     </div>
 </div>
-
 
 <script>
 window.BASE_URL = "<?= base_url(); ?>";

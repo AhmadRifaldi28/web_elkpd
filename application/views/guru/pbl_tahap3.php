@@ -1,48 +1,13 @@
-<style>
-/* ===== TABLE RESPONSIVE PBL ===== */
-#observasiTable,
-#diskusiTable {
-    min-width: 720px !important;
-}
+<?php if ($this->session->userdata('role') == 'Siswa'): ?>
+    <style>
+        #main { background: url('<?= base_url("assets/img/tema_3.png"); ?>') no-repeat top center !important; }
+        /* Sembunyikan Judul Bawaan Template */
+        .pagetitle { display: none !important; }
 
-#observasiTable thead th,
-#diskusiTable thead th {
-    background: #e0efff !important;
-}
+    </style>
+    <?php endif ?>
 
-.table-responsive {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch;
-}
-
-.action {
-    width: 20%;
-}
-
-/* Responsive Styles */
-@media (max-width: 1051px) {
-    .action {
-        width: 28%;
-    }
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-
-    #observasiTable thead th,
-    #diskusiTable thead th {
-        position: sticky;
-        top: 0;
-        z-index: 2;
-    }
-}
-
-@media (max-width: 576px) {
-    #observasiTable td {
-        white-space: nowrap;
-    }
-}
-</style>
+    <link rel="stylesheet" href="<?= base_url('assets/css/pbl.css'); ?>">
 
 <div class="container-fluid">
     <div class="pagetitle mb-3">
@@ -58,6 +23,18 @@
         </nav>
     </div>
 
+    <?php if ($this->session->userdata('role') == 'Siswa'): ?>
+        <div class="d-flex justify-content-center">
+            <div class="fun-header">
+                <h1 class="fun-title">
+                    <i class="ri-team-fill text-warning me-2"></i> <?= $title ?>
+                </h1>
+            </div>
+        </div>
+    <?php endif ?>
+
+    <div class="kids-panel">
+        
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
         <a href="<?= base_url($url_name . '/pbl/tahap2/' . $class_id) ?>" class="btn btn-secondary">
             <i class="ri-arrow-go-back-line"></i> Kembali
@@ -78,16 +55,18 @@
             class="fw-bold">observasi</span>.
     </div>
 
-    <ul class="nav nav-tabs mb-3" id="pblTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="observasi-tab" data-bs-toggle="tab" data-bs-target="#observasi"
-                type="button" role="tab">Ruang Observasi</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="diskusi-tab" data-bs-toggle="tab" data-bs-target="#diskusi" type="button"
-                role="tab">Forum Diskusi</button>
-        </li>
-    </ul>
+    <div class="text-center m-2">
+        <ul class="nav nav-pills-custom" id="pblTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="observasi-tab" data-bs-toggle="tab" data-bs-target="#observasi"
+                    type="button" role="tab">Ruang Observasi</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="diskusi-tab" data-bs-toggle="tab" data-bs-target="#diskusi" type="button"
+                    role="tab">Forum Diskusi</button>
+            </li>
+        </ul>
+    </div>
 
     <div class="tab-content" id="pblTabContent">
 
@@ -116,7 +95,7 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="observasiTable">
+                <table class="table table-bordered table-hover table-pbl" id="observasiTable">
                     <thead class="table-light">
                         <tr>
                             <th style="width:60px">No</th>
@@ -155,7 +134,7 @@
                 <?php endif; ?>
             </div>
             <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="diskusiTable">
+                <table class="table table-bordered table-hover table-pbl" id="diskusiTable">
                     <thead class="table-light">
                         <tr>
                             <th style="width:60px">No</th>
@@ -170,6 +149,8 @@
         </div>
 
     </div>
+</div>
+    <div class="page-spacer"></div>
 </div>
 
 <!-- Modal 1: Observasi -->

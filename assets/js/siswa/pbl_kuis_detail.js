@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Helper untuk menandai opsi
       const getBadge = (optKey) => {
-      	if (q.correct_answer === optKey) return '<span class="badge bg-success ms-2"><i class="bi bi-check"></i> Kunci</span>';
-      	if (q.selected_option === optKey && !isCorrect) return '<span class="badge bg-danger ms-2"><i class="bi bi-x"></i> Jawabanmu</span>';
+      	if (q.correct_answer === optKey) return '<span class="badge bg-success ms-2"><i class="ri ri-check-fill"></i> Benar</span>';
+      	if (q.selected_option === optKey && !isCorrect) return '<span class="badge bg-danger ms-2"><i class="ri ri-close-fill"></i> Jawabanmu</span>';
       	return '';
       };
 

@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       return [
         index + 1, // Nomor urut (akan jadi 1 karena cuma ada 1 data)
-        `<span class="fw-bold text-success">${student.student_name} (Anda)</span>`,
+        `<span class="fw-bold text-success">${student.student_name}</span>`,
         quiz.toFixed(0),
         tts.toFixed(0),
         obs.toFixed(0),

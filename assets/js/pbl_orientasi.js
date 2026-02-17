@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hiddenIdField: 'pblId',
     tableId: 'pblTable',
     btnAddId: 'btnAddPbl',
-    tableParentSelector: '.card-body',
+    tableParentSelector: '.orientationContainer',
 
     // CSRF CONFIG 
     csrf: {
@@ -75,10 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fileHtml = `
       <div class="d-flex gap-2 align-items-center justify-content-center">
-        <span class="border rounded border-${badge} p-1">
-          <i class="bi ${icon} me-1"></i> ${ext.toUpperCase()}
-        </span>
-        <button class="btn btn-bd-primary btn-sm btn-preview"
+        <button class="btn btn-bd-primary btn-preview"
           data-id="${item.id}" data-ext="${ext}">
           Lihat
         </button>

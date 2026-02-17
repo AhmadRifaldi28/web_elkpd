@@ -1,219 +1,146 @@
-<style>
-/* ===== TABLE RESPONSIVE PBL ===== */
-#pblTable {
-    min-width: 720px !important;
-}
+<?php if ($this->session->userdata('role') == 'Siswa'): ?>
+    <style>
+        #main { background: url('<?= base_url("assets/img/tema.png"); ?>') no-repeat top center !important; }
+        /* Sembunyikan Judul Bawaan Template */
+        .pagetitle { display: none !important; }
 
-.table-responsive {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch;
-}
+    </style>
+    <?php endif ?>
 
-#pblTable thead th {
-    background: #e0efff !important;
-}
+    <link rel="stylesheet" href="<?= base_url('assets/css/pbl.css'); ?>">
 
-/* ===== PREVIEW MODAL RESPONSIVE ===== */
-#filePreviewModal .modal-dialog {
-    max-width: 95vw !important;
-}
+    <div class="container-fluid px-md-5">
 
-#filePreviewModal .modal-body {
-    max-height: 75vh !important;
-    overflow: auto !important;
-    padding: 0.75rem !important;
-}
-
-/* iframe / video / image */
-#filePreviewModal iframe,
-#filePreviewModal video {
-    width: 100% !important;
-    height: 70vh !important;
-}
-
-#filePreviewModal img {
-    max-width: 100% !important;
-    height: auto !important;
-}
-
-@media (max-width: 768px) {
-    #pblTable thead th {
-        position: sticky;
-        top: 0;
-        z-index: 2;
-        background: #f8f9fa !important;
-    }
-
-    .badge {
-        display: none;
-    }
-}
-
-@media (max-width: 576px) {
-    .btn-preview {
-        width: 100% !important;
-    }
-
-    #pblTable td {
-        white-space: nowrap;
-    }
-}
-</style>
-
-
-<div class="container-fluid pagetitle-hero d-flex flex-column justify-content-center">
-
-    <!-- ================= HEADER HALAMAN ================= -->
-    <div class="pagetitle mb-3">
-        <!-- <h1 class="d-flex align-items-center gap-2">
-			<i class="bi bi-compass text-primary"></i>
-			Tahap 1 – Orientasi Masalah
-		</h1> -->
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="<?= base_url($url_name . '/dashboard/class_detail/' . $class_id) ?>">
-                        PBL
-                    </a>
-                </li>
-                <li class="breadcrumb-item active">Orientasi Masalah</li>
-            </ol>
-        </nav>
-    </div>
-
-    <!-- ================= NAVIGASI ATAS ================= -->
-    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
-        <a href="<?= base_url($url_name . '/dashboard/class_detail/' . $class_id) ?>" class="btn btn-secondary">
-            <i class="ri-arrow-go-back-line"></i> Kembali ke Kelas
-        </a>
-
-        <a href="<?= base_url($url_name . '/pbl/tahap2/' . $class_id); ?>" class="btn btn-outline-primary">
-            <i class="ri-question-line"></i>
-            Tahap 2
-        </a>
-    </div>
-
-    <!-- CSRF -->
-    <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>"
-        value="<?= $this->security->get_csrf_hash(); ?>">
-    <input type="hidden" id="classIdHidden" value="<?= $class_id; ?>">
-
-    <!-- ================= INFO ================= -->
-    <div class="alert alert-info d-flex align-items-center shadow-sm border-0">
-        <i class="bi bi-info-circle-fill me-2 fs-5"></i>
-        <div>
-            Halaman ini menampilkan <strong>skenario masalah PBL</strong>.
-            Klik tombol <strong>Lihat</strong> untuk melihat materi pembelajaran.
+    <?php if ($this->session->userdata('role') == 'Siswa'): ?>
+    <div class="d-flex justify-content-center mb-3">
+        <div class="fun-header text-center">
+            <h1 class="fun-title">
+                <i class="ri-compass-3-line text-warning me-2"></i> Orientasi Masalah
+            </h1>
         </div>
     </div>
+    <?php endif ?>
 
-    <!-- ================= CARD TABLE ================= -->
-    <div class="card shadow-sm">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">
-                <i class="ri-book-2-line me-1"></i>
-                <strong class="text-dark">Daftar Skenario Masalah</strong>
-            </h5>
-            <div class="d-flex align-items-center gap-2 ">
-                <?php if ($is_admin_or_guru): ?>
-                <button class="btn btn-success btn-sm" id="btnAddPbl">
-                    <i class="bi bi-plus-circle me-1"></i> Tambah Skenario
-                </button>
-                <a href="<?= site_url('guru/pbl/panduan_tahap1'); ?>" class="btn btn-info btn-sm">
-                    Panduan Orientasi Masalah
+    <div class="kids-panel">
+        
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+            
+
+            <?php if ($this->session->userdata('role') == 'Siswa'): ?>
+                <a href="<?= base_url('siswa/dashboard') ?>" class="btn btn-fun btn-yellow">
+                    <i class="ri-arrow-go-back-line"></i> Kembali
                 </a>
+            <?php else: ?>
+                <a href="<?= base_url($url_name . '/dashboard/class_detail/' . $class_id) ?>" class="btn btn-fun btn-yellow">
+                    <i class="ri-arrow-go-back-line"></i> Kembali ke Kelas
+                </a>
+            <?php endif ?>
+
+            <div class="d-flex gap-2 flex-wrap">
+                <?php if ($is_admin_or_guru): ?>
+                    <button class="btn btn-fun btn-green" id="btnAddPbl">
+                        <i class="ri-add-circle-fill"></i> Tambah Masalah
+                    </button>
+                    <a href="<?= site_url('guru/pbl/panduan_tahap1'); ?>" class="btn btn-fun btn-cyan">
+                        <i class="ri-book-open-line"></i> Panduan
+                    </a>
                 <?php endif; ?>
+                
+                <a href="<?= base_url($url_name . '/pbl/tahap2/' . $class_id); ?>" class="btn btn-fun btn-blue text-dark">
+                    Tahap 2 <i class="ri-question-line fs-3"></i>
+                </a>
             </div>
-            <?php if ($url_name == 'siswa'): ?>
-            <a href="<?= site_url('siswa/pbl/panduan_tahap1'); ?>" class="btn btn-info btn-sm">
-                Panduan Tahap 1
-            </a>
-            <?php endif; ?>
-
         </div>
-    </div>
 
+        <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>"
+            value="<?= $this->security->get_csrf_hash(); ?>">
+        <input type="hidden" id="classIdHidden" value="<?= $class_id; ?>">
 
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover align-middle" id="pblTable" style="width:100%">
-                <thead class="table-light">
+        <div class="alert alert-info d-flex align-items-center mb-4 shadow-sm">
+            <i class="ri-information-fill fs-3 me-3"></i> 
+            <div>
+                Ayo baca skenario masalah di bawah ini dengan teliti, lalu lihat materinya ya!
+            </div>
+        </div>
+
+        <div class="table-responsive orientationContainer">
+            <table class="table table-pbl" id="pblTable" width="100%">
+                <thead>
                     <tr>
-                        <th style="width:60px">No</th>
+                        <th style="width:60px" class="text-center">No</th>
                         <th>Judul</th>
-                        <th>Refleksi Awal</th>
-                        <th style="width:20%">Materi</th>
+                        <th>Refleksi</th>
+                        <th width="20%" class="text-center">Materi</th>
                         <?php if ($is_admin_or_guru): ?>
-                        <th style="width:120px">Aksi</th>
+                            <th style="width:120px" class="text-center">Aksi</th>
                         <?php endif; ?>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                    </tbody>
             </table>
         </div>
-    </div>
-</div>
-</div>
 
-<!-- ================= MODAL PREVIEW FILE ================= -->
-<div class="modal fade" id="filePreviewModal" tabindex="-1">
+    </div>
+
+    <div class="page-spacer"></div>
+
+    </div>
+
+    <div class="modal fade" id="filePreviewModal" tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">
-                    <i class="bi bi-eye me-1"></i> Preview Materi
+        <div class="modal-content rounded-5 border-0 shadow-lg">
+            <div class="modal-header bg-primary text-white border-0 py-3">
+                <h5 class="modal-title fw-bold font-heading fs-4">
+                    <i class="ri-eye-fill me-2"></i> Lihat Materi Belajar
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
-            <div class="modal-body" id="filePreviewContent">
-                <!-- diisi via JS -->
-            </div>
+            <div class="modal-body p-0" id="filePreviewContent" style="min-height: 400px; background: #eef2f5;">
+                </div>
         </div>
     </div>
-</div>
+    </div>
 
-<!-- ================= MODAL FORM ================= -->
-<?php if ($is_admin_or_guru): ?>
-<div class="modal fade" id="pblModal" tabindex="-1">
+    <?php if ($is_admin_or_guru): ?>
+    <div class="modal fade" id="pblModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-content rounded-5 border-0 shadow-lg">
+            <div class="modal-header bg-success text-white border-0 py-3">
+                <h5 class="modal-title fw-bold fs-4 font-heading" id="pblModalLabel">Form Masalah PBL</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            
             <form id="pblForm" enctype="multipart/form-data">
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title" id="pblModalLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
+                <div class="modal-body p-4">
                     <input type="hidden" id="pblId" name="id">
                     <input type="hidden" name="class_id" value="<?= $class_id; ?>">
 
-                    <div class="mb-3">
-                        <label class="form-label">Judul</label>
-                        <input type="text" class="form-control" id="pblTitle" name="title" required>
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-dark fs-5">Judul</label>
+                        <input type="text" class="form-control form-control-lg rounded-pill" id="pblTitle" name="title" placeholder="Contoh: Banjir di Sekolahku" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-dark fs-5">Refleksi Awal</label>
+                        <textarea class="form-control rounded-4" id="pblReflection" name="reflection" rows="4" placeholder="Tuliskan pertanyaan pemantik untuk siswa..." required style="resize: none;"></textarea>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Refleksi Awal</label>
-                        <textarea class="form-control" id="pblReflection" name="reflection" rows="3"
-                            required></textarea>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Upload Materi</label>
-                        <input type="file" class="form-control" id="pblFile" name="file">
+                        <label class="form-label fw-bold text-dark fs-5">Upload Materi Pendukung</label>
+                        <input type="file" class="form-control form-control-lg rounded-pill" id="pblFile" name="file">
                     </div>
                 </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-success">
-                        Simpan
-                    </button>
+                <div class="modal-footer bg-light border-0 py-3">
+                    <button type="button" class="btn btn-secondary rounded-pill px-4 py-2" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-success rounded-pill px-5 py-2 fw-bold shadow-sm">Simpan</button>
                 </div>
             </form>
         </div>
     </div>
-</div>
-<?php endif; ?>
+    </div>
+    <?php endif; ?>
 
 <script>
 window.BASE_URL = "<?= base_url(); ?>";

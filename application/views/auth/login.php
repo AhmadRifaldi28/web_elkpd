@@ -22,7 +22,7 @@
         min-height: 100vh;
         background: linear-gradient(rgba(0, 0, 0, 0.6),
                 rgba(0, 0, 0, 0.6)),
-            url("<?= base_url('assets/img/bg-elearning.jpg'); ?>") center/cover no-repeat;
+            url("<?= base_url('assets/img/tema_3.png'); ?>") center/cover no-repeat;
         display: flex;
         align-items: center;
         justify-content: center;

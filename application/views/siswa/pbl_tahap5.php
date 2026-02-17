@@ -1,20 +1,17 @@
-<style>
-/* Styling agar tabel responsif (Sama seperti Guru) */
-#rekapTable,
-#reflectionTable {
-    min-width: 720px !important;
-}
+<?php if ($this->session->userdata('role') == 'Siswa'): ?>
+    <style>
+        #main { background: url('<?= base_url("assets/img/tema_4.png"); ?>') no-repeat top center !important; }
+        /* Sembunyikan Judul Bawaan Template */
+        .pagetitle { display: none !important; }
 
-.table-responsive {
-    overflow-x: auto !important;
-}
+    </style>
+    <?php endif ?>
 
-thead th {
-    background: #e0efff !important;
-    text-align: center;
-    vertical-align: middle;
-}
-</style>
+    <link rel="stylesheet" href="<?= base_url('assets/css/pbl.css'); ?>">
+
+    <style>
+        .page-spacer {height: 68vw;}
+    </style>
 
 <div class="container-fluid">
 
@@ -30,6 +27,15 @@ thead th {
             </ol>
         </nav>
     </div>
+    <div class="d-flex justify-content-center">
+        <div class="fun-header">
+            <h1 class="fun-title">
+                <i class="ri-line-chart-line text-warning me-2"></i> <?= $title ?>
+            </h1>
+        </div>
+    </div>
+
+    <div class="kids-panel">
 
     <div class="d-flex justify-content-between align-items-center mb-3">
         <a href="<?= base_url($url_name . '/pbl/tahap4/' . $class_id) ?>" class="btn btn-secondary">
@@ -55,7 +61,7 @@ thead th {
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-hover table-bordered align-middle" id="rekapTable">
+                <table class="table table-hover table-bordered align-middle table-pbl" id="rekapTable">
                     <thead class="table-light">
                         <tr>
                             <th width="5%">No</th>
@@ -81,7 +87,7 @@ thead th {
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover align-middle" id="reflectionTable">
+                <table class="table table-bordered table-hover align-middle table-pbl" id="reflectionTable">
                     <thead class="table-light">
                         <tr>
                             <th width="5%">No</th>
@@ -96,7 +102,8 @@ thead th {
             </div>
         </div>
     </div>
-
+    </div>
+    <div class="page-spacer"></div>
 </div>
 
 <div class="modal fade" id="refleksiModal" tabindex="-1" aria-labelledby="refleksiModalLabel" aria-hidden="true">

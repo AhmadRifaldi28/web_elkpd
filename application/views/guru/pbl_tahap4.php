@@ -1,43 +1,18 @@
-<style>
-/* ===== TABLE RESPONSIVE PBL ===== */
-#esaiTable {
-    min-width: 720px !important;
-}
+<?php if ($this->session->userdata('role') == 'Siswa'): ?>
+    <style>
+        #main { background: url('<?= base_url("assets/img/tema_2.png"); ?>') no-repeat top center !important; }
+        /* Sembunyikan Judul Bawaan Template */
+        .pagetitle { display: none !important; }
 
-.table-responsive {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch;
-}
+    </style>
+    <?php endif ?>
 
-#esaiTable thead th {
-    background: #e0efff !important;
-}
+    <link rel="stylesheet" href="<?= base_url('assets/css/pbl.css'); ?>">
 
-.action {
-    width: 20%;
-}
+    <style>
+        .page-spacer {height: 19vw;}
+    </style>
 
-/* Responsive Styles */
-@media (max-width: 1051px) {
-    .action {
-        width: 28%;
-    }
-}
-
-@media (max-width: 768px) {
-    #esaiTable thead th {
-        position: sticky;
-        top: 0;
-        z-index: 2;
-    }
-}
-
-@media (max-width: 576px) {
-    #esaiTable td {
-        white-space: nowrap;
-    }
-}
-</style>
 <div class="container-fluid">
     <div class="pagetitle mb-3">
         <nav>
@@ -51,6 +26,18 @@
             </ol>
         </nav>
     </div>
+
+    <?php if ($this->session->userdata('role') == 'Siswa'): ?>
+        <div class="d-flex justify-content-center">
+            <div class="fun-header">
+                <h1 class="fun-title">
+                    <i class="ri-team-fill text-warning me-2"></i> <?= $title ?>
+                </h1>
+            </div>
+        </div>
+    <?php endif ?>
+
+    <div class="kids-panel">
 
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
         <a href="<?= base_url($url_name . '/pbl/tahap3/' . $class_id) ?>" class="btn btn-secondary">
@@ -73,7 +60,7 @@
         Halaman ini menampilkan daftar esai. Klik tombol <strong>"Detail" </strong>untuk melihat soal esai.
     </div>
 
-    <ul class="nav nav-tabs mb-3" id="pblTab" role="tablist">
+    <ul class="nav nav-pills-custom m-3" id="pblTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="solusi-tab" data-bs-toggle="tab" data-bs-target="#solusi" type="button"
                 role="tab">Aktivitas Esai Solusi</button>
@@ -107,7 +94,7 @@
                 <?php endif; ?>
             </div>
             <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="esaiTable">
+                <table class="table table-bordered table-hover table-pbl" id="esaiTable">
                     <thead class="table-light">
                         <tr>
                             <th style="width:60px">No</th>
@@ -122,6 +109,10 @@
         </div>
 
     </div>
+
+    </div> 
+    <div class="page-spacer"></div>
+
 </div>
 
 <!-- Modal 1: Esai Solusi -->

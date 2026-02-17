@@ -9,6 +9,33 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+/*@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');*/
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('Nunito.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('Nunito2.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('Open_Sans.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('Poppins.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fredoka';
+  src: url('Fredoka-Regular.ttf') format('truetype');
+}
+
 /* 1. Definisi Warna Dasar (Root Variables) */
 :root {
     scroll-behavior: smooth;
@@ -30,7 +57,7 @@
   }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Nunito", "Open Sans", sans-serif;
   background: #f6f9ff;
   color: #444444;
 }
@@ -51,7 +78,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Nunito", sans-serif;
+  /*font-family: "Nunito", sans-serif;*/
+  font-family: "Fredoka", sans-serif;
 }
 
 /*--------------------------------------------------------------

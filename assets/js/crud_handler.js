@@ -274,7 +274,8 @@ export default class CrudHandler {
                 perPage: "",
                 noRows: "Tidak ada data ditemukan",
                 noResults: "Tidak ada data ditemukan",
-                info: "Menampilkan {start} sampai {end} dari {rows} data",
+                // info: "Menampilkan {start} sampai {end} dari {rows} data",
+                info: "",
             }
         });
     }

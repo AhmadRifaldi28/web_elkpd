@@ -149,7 +149,7 @@
 
     <div class="d-flex align-items-center justify-content-between mb-3">
         <h5 class="fw-bold text-dark m-0">Kelas Saya</h5>
-        <span class="badge bg-light text-primary border">Semester Aktif</span>
+        <!-- <span class="badge bg-light text-primary border">Semester Aktif</span> -->
     </div>
 
     <div class="row">
@@ -185,9 +185,9 @@
                             </p>
 
                             <div class="mt-auto">
-                                <a href="<?= base_url('siswa/dashboard/class_detail/' . $kelas->id) ?>" class="btn btn-action w-100">
-                                    <span>Masuk Kelas</span>
-                                    <i class="ri-arrow-right-circle-fill fs-4"></i>
+                                <a href="<?= base_url('siswa/pbl/index/' . $kelas->id) ?>" class="btn btn-action w-100">
+                                    <span>Mulai Belajar</span>
+                                    <i class="ri-arrow-right-line fs-4"></i>
                                 </a>
                             </div>
                         </div>

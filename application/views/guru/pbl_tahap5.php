@@ -40,6 +40,7 @@ thead th {
     }
 }
 </style>
+<link rel="stylesheet" href="<?= base_url('assets/css/pbl.css'); ?>">
 
 <div class="container-fluid">
     <div class="pagetitle mb-3">

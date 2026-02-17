@@ -14,8 +14,8 @@
   <link href="<?= base_url('assets/img/apple-touch-icon.png'); ?>" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Nunito:300,400,600,700|Poppins:300,400,500,600,700" rel="stylesheet">
+<!--   <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Nunito:300,400,600,700|Poppins:300,400,500,600,700" rel="stylesheet"> -->
 
   <!-- Vendor CSS Files -->
   <link href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
@@ -56,11 +56,6 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   }
 
-  /* Override Sidebar agar match dengan header (jika file sidebar terpisah) */
-  .sidebar {
-    background: var(--bg-deep-blue) !important;
-    box-shadow: 2px 0 20px rgba(0,0,0,0.05);
-  }
 
     /* ===== 3. HEADER COMPONENTS ===== */
 
@@ -408,6 +403,6 @@
   <!-- End Header -->
 
   <main id="main" class="main">
-    <div class="pagetitle">
+    <div class="pagetitle fun-header">
       <h1><?= $title ?? 'E-LKPD'; ?></h1>
     </div><!-- End Page Title -->

@@ -1,0 +1,276 @@
+/* 1. Import Font Google: Fredoka (Judul) & Nunito (Bacaan) */
+/*@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap');*/
+
+/* ===== TEMA KONSISTEN PBL ANAK SD ===== */
+:root {
+    --pbl-blue: #4facfe;
+    --pbl-light-blue: #e3f2fd;
+    --pbl-dark-blue: #0052cc;
+    --pbl-green: #52B788;
+    --pbl-teal: #2ec4b6;
+    --pbl-orange: #ff9f1c;
+    --pbl-yellow: #ffbf00;
+    --pbl-red: #f5576c;
+    --pbl-purple: #8338ec;
+    --text-dark: #2D3436;
+    --white-glass: rgba(255, 255, 255, 0.9);
+    /* Font Strategy: Fredoka untuk Headings (Fun), Nunito untuk Body (Jelas) */
+    --font-heading: "Fredoka", cursive; 
+    --font-body: "Nunito", sans-serif;
+}
+
+/* Global Reset untuk Tipografi Anak */
+body {
+    font-family: var(--font-body) !important;
+    font-size: 18px; /* TARGET: Minimal 16-18px */
+    line-height: 1.6; /* TARGET: Spasi baris lega (1.5 - 1.6) */
+    color: #444; /* Abu tua, bukan hitam pekat (lebih lembut di mata) */
+}
+
+/* 1. Layout Dasar */
+#main {    
+    background-size: 100% auto !important;
+    background-attachment: scroll !important;
+    min-height: 100vh; 
+    position: relative;
+    padding-bottom: 0px; /* Tambahan spasi bawah */
+}
+
+#main::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.15); /* Sedikit lebih terang */
+    pointer-events: none;
+    z-index: 0;
+    height: 100%;
+}
+
+/* ===== PANEL KONTEN (GLASS EFFECT) ===== */
+.kids-panel {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 30px; /* TARGET: Rounded corners lebih besar */
+    padding: 40px; /* TARGET: Padding lebih lega */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border: 4px solid rgba(255,255,255,0.9);
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* ===== JUDUL HALAMAN (HEADER) ===== */
+.fun-header {
+    background: #fff;
+    border-radius: 50px;
+    padding: 15px 40px;
+    display: inline-block;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border: 4px solid #fff;
+    border-left: 12px solid var(--pbl-blue);
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.fun-title {
+    margin: 0;
+    font-family: var(--font-heading); /* TARGET: Font Humanist */
+    font-weight: 600;
+    color: #012970;
+    font-size: 1.6rem; /* TARGET: Heading min 24-32px */
+    text-transform: none; /* TARGET: Hapus All-Caps */
+    letter-spacing: 0.5px;
+}
+
+/* ===== NAVIGASI TABS (GAYA TOMBOL GAME) ===== */
+.nav-pills-custom {
+    background: #f1f8ff;
+    padding: 10px;
+    border-radius: 50px;
+    display: inline-flex;
+    gap: 10px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.nav-pills-custom .nav-link {
+    border-radius: 40px;
+    color: #555;
+    font-weight: 700;
+    padding: 10px 25px;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+.nav-pills-custom .nav-link:hover {
+    background: #fff;
+    color: var(--pbl-teal);
+}
+
+.nav-pills-custom .nav-link.active {
+    background-color: var(--pbl-teal);
+    color: white;
+    box-shadow: 0 4px 10px rgba(46, 196, 182, 0.4);
+    transform: scale(1.05);
+}
+
+/* Tab TTS warna oranye */
+.nav-pills-custom .nav-link#tts-tab.active,
+.nav-pills-custom .nav-link#diskusi-tab.active {
+    background-color: var(--pbl-orange);
+    box-shadow: 0 4px 10px rgba(255, 159, 28, 0.4);
+}
+
+/* ===== TOMBOL WARNA-WARNI ===== */
+.btn-fun {
+    font-family: var(--font-heading);
+    border-radius: 50px;
+    /*font-size: 18px !important;*/
+    font-size: 1.14rem !important;
+    font-weight: 500;
+    padding: 12px 30px; /* Tombol lebih gemuk */
+    border: none;
+    box-shadow: 0 5px 0 rgba(0,0,0,0.15); /* Efek 3D lebih tebal */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.btn-fun:active { box-shadow: none; }
+.btn-fun:hover { 
+    filter: brightness(1.05); 
+    border: 2px solid var(--pbl-blue);
+}
+
+.btn-yellow { background: var(--pbl-yellow); color: #664d03 !important; }
+.btn-blue   { background: var(--pbl-blue); }
+.btn-green  { background: #06d6a0; }
+.btn-purple { background: var(--pbl-purple); }
+.btn-cyan   { background: var(--pbl-teal); }
+
+.text-dark-blue{ color: var(--pbl-dark-blue); }
+
+/* ===== TABEL (PERBAIKAN UTAMA) ===== */
+
+/* Container Tabel */
+.table-responsive {
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    background: white;
+    padding: 5px; /* Memberi frame putih tipis */
+}
+
+/* Selector digabung agar pblTable juga kena style */
+#pblTable, #quizTable, #ttsTable, #questionTable, .table-pbl {
+    border-collapse: separate; 
+    border-spacing: 0; /* Reset spacing standar */
+    width: 100%;
+}
+
+/* Header Tabel */
+#pblTable thead th, 
+#quizTable thead th, 
+#ttsTable thead th, 
+#questionTable thead th,
+.table-pbl thead th {
+    background: var(--pbl-light-blue) !important;
+    color: #003366 !important;
+    /*padding: 22px 25px !important;*/
+    font-family: var(--font-heading);
+    font-size: 20px; /* TARGET: Font Header Besar */
+    font-weight: 500;
+    text-transform: none !important; /* TARGET: Hapus All-Caps */
+    border: none !important;
+}
+
+/* Sudut Tumpul Header */
+#pblTable thead tr th:first-child { border-radius: 20px 0 0 0 !important; }
+#pblTable thead tr th:last-child  { border-radius: 0 20px 0 0 !important; }
+
+/* Isi Tabel (Body) */
+#pblTable tbody td,
+#questionTable tbody td,
+.table-pbl tbody td {
+    /*padding: 25px !important;*/
+    /*font-family: var(--font-body);*/
+    font-family: "Poppins", sans-serif !important;
+    font-size: 18px; /* TARGET: Body text min 18px */
+    font-weight: 600; /* Sedikit bold agar jelas */
+    color: #555;
+    vertical-align: middle;
+    border-bottom: 2px solid #f0f4f8 !important;
+}
+
+/* Efek Zebra (Genap) - Warna Pastel Sangat Muda */
+#pblTable tbody tr:nth-child(even),
+#questionTable tbody tr:nth-child(even),
+.table-pbl tbody tr:nth-child(even) {
+    background-color: #f0f9ff; 
+}
+
+/* Efek Hover Baris */
+#pblTable tbody tr:hover td,
+#questionTable tbody tr:hover td,
+.table-pbl tbody tr:hover td {
+    background-color: #fff8e1 !important; /* Kuning soft */
+    color: #000;
+    cursor: pointer;
+}
+
+/* Styling Kolom Nomor (Agar bulat lucu) */
+#pblTable tbody td:first-child,
+.table-pbl tbody td:first-child {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    color: var(--pbl-dark-blue);
+    text-align: center;
+}
+
+/* Instruction Box / Alert */
+.alert-info {
+    font-family: var(--font-heading);
+    font-size: 18px !important;
+    background-color: #e3f2fd;
+    border: 2px solid var(--pbl-blue) !important;
+    border-radius: 20px !important;
+    color: #0277bd !important;
+    padding: 20px !important;
+}
+
+/* Input Search DataTable */
+.datatable-input {
+    border-radius: 30px !important;
+    padding: 12px 25px !important;
+    font-size: 16px !important;
+    border: 2px solid #ddd !important;
+}
+.datatable-input:focus {
+    border-color: var(--pbl-blue) !important;
+    box-shadow: 0 0 0 4px rgba(79, 172, 254, 0.2) !important;
+}
+
+.page-spacer {
+    /* Tinggi dinamis untuk menampilkan sisa background */
+    height: 60vw; 
+    width: 100%;
+    display: block;
+    pointer-events: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    #main { background-size: cover !important; }
+    .fun-title { font-size: 1.5rem; }
+    .kids-panel { padding: 20px; }
+    .nav-pills-custom { width: 100%; justify-content: center; }
+    #pblTable thead th { font-size: 16px; padding: 15px !important; }
+    #pblTable tbody td { font-size: 15px; padding: 15px !important; }
+    .btn-fun { width: 100%; justify-content: center; }
+    .page-spacer {
+        height: 50vw; /* Sama dengan lebar layar (kotak) */
+    }
+}
