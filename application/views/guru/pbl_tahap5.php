@@ -68,8 +68,7 @@ thead th {
                 class="btn btn-danger">
                 <i class="bi bi-file-earmark-pdf"></i> Export Laporan (PDF)
             </a>
-            <button class="btn btn-success disabled" disabled><i class="bi bi-check-circle"></i> Project
-                Selesai</button>
+
 
             <?= $this->session->flashdata('message'); ?>
         </div>

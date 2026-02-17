@@ -10,25 +10,32 @@
 
     <link href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap-icons/bootstrap-icons.css') ?>">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
     body {
         margin: 0;
         min-height: 100vh;
+        font-family: 'Poppins', sans-serif;
     }
 
-    /* FULL BACKGROUND */
+    /* FULL BACKGROUND (TETAP SEPERTI SEBELUMNYA) */
     .login-bg {
         min-height: 100vh;
+<<<<<<< HEAD
         background: linear-gradient(rgba(0, 0, 0, 0.6),
                 rgba(0, 0, 0, 0.6)),
             url("<?= base_url('assets/img/tema_3.png'); ?>") center/cover no-repeat;
+=======
+        position: relative;
+        background: url('<?= base_url('assets/img/Bg-elearning.png'); ?>') center/cover no-repeat;
+>>>>>>> d7fa5c795b6dea33230aca4f8545b629e685f4b5
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    /* CONTENT WRAPPER */
+    /* CONTENT */
     .login-container {
         width: 100%;
         max-width: 1200px;
@@ -47,21 +54,132 @@
     }
 
     .branding p {
-        font-size: 1.2rem;
-        opacity: 0.9;
+        font-size: 1.15rem;
+        opacity: 0.95;
     }
 
-    /* LOGIN CARD */
+    /* LOGIN CARD (DIBUAT LEBIH LUCU) */
     .login-card {
         max-width: 420px;
-        border-radius: 18px;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        border-radius: 28px;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.34);
+        background: #ffffff35;
+        border: 4px solid #8295ffff;
     }
 
+    /* HEADER */
+    .login-card h4 {
+        color: #005effff;
+    }
+
+    /* INPUT */
+    .form-control {
+        border-radius: 18px;
+        padding: 11px 14px;
+    }
+
+    .input-group-text {
+        background: #82b6ffff;
+        border: none;
+        border-radius: 18px 0 0 18px;
+    }
+
+    /* BUTTON */
+    .btn-primary {
+        background-color: #003cffff;
+        border: none;
+        border-radius: 22px;
+        padding: 12px;
+        font-size: 1.05rem;
+    }
+
+    .btn-primary:hover {
+        background-color: #003cffff;
+    }
+
+    /* ALERT */
+    .alert {
+        border-radius: 18px;
+    }
+
+    /* LINK */
+    a {
+        color: #0066ffff;
+    }
+
+    a:hover {
+        color: #0045f5ff;
+    }
+
+    /* RESPONSIVE */
     @media (max-width: 991px) {
         .branding {
             display: none;
         }
+    }
+
+    /* ANIMASI MASUK CARD */
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .login-card {
+        animation: fadeUp 0.8s ease;
+    }
+
+    /* ANIMASI JUDUL */
+    @keyframes wave {
+
+        0%,
+        100% {
+            transform: rotate(0);
+        }
+
+        25% {
+            transform: rotate(3deg);
+        }
+
+        75% {
+            transform: rotate(-3deg);
+        }
+    }
+
+    .login-title span {
+        display: inline-block;
+        animation: wave 1.5s infinite ease-in-out;
+    }
+
+    /* INPUT FOCUS LUCU */
+    .form-control:focus {
+        border-color: #0004ffff;
+        box-shadow: 0 0 0 0.2rem rgba(7, 36, 255, 0.25);
+    }
+
+    /* BUTTON POP */
+    .btn-primary {
+        transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px) scale(1.03);
+        box-shadow: 0 8px 18px rgba(0, 13, 255, 0.4);
+    }
+
+    /* ICON GOYANG */
+    .input-group-text i {
+        transition: transform 0.3s ease;
+    }
+
+    .input-group:hover i {
+        transform: rotate(-10deg) scale(1.1);
     }
     </style>
 </head>
@@ -89,8 +207,11 @@
 
                             <div class="text-center mb-4">
                                 <img src="<?= base_url('assets/img/logo.png') ?>" width="90" class="mb-3">
-                                <h4 class="fw-bold">Selamat Datang</h4>
-                                <p class="text-muted mb-0">Silakan login untuk melanjutkan</p>
+                                <h4 class="fw-bold login-title">
+                                    Halo, Teman <span>👋</span>
+                                </h4>
+
+                                <p class="text-muted mb-0">Ayo masuk dan belajar bersama 📚✨</p>
                             </div>
 
                             <?php if ($this->session->flashdata('error')): ?>
