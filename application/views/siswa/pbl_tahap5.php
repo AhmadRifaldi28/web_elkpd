@@ -41,7 +41,7 @@
         <a href="<?= base_url($url_name . '/pbl/tahap4/' . $class_id) ?>" class="btn btn-secondary">
             <i class="ri-arrow-go-back-line"></i> Kembali
         </a>
-        <button class="btn btn-success disabled" disabled><i class="bi bi-check-circle"></i> Project Selesai</button>
+        <!-- <button class="btn btn-success disabled" disabled><i class="bi bi-check-circle"></i> Project Selesai</button> -->
     </div>
 
 

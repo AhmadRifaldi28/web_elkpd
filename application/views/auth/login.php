@@ -28,7 +28,7 @@
             url("<?= base_url('assets/img/tema_3.png'); ?>") center/cover no-repeat;
 =======
         position: relative;
-        background: url('<?= base_url('assets/img/Bg-elearning.png'); ?>') center/cover no-repeat;
+        background: url('<?= base_url('assets/img/Bg-learning.png'); ?>') center/cover no-repeat;
 >>>>>>> d7fa5c795b6dea33230aca4f8545b629e685f4b5
         display: flex;
         align-items: center;

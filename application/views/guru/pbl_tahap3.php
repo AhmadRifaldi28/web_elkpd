@@ -51,7 +51,7 @@
     <div class="alert alert-info border-0 shadow-sm">
         <i class="bi bi-info-circle-fill me-2"></i>
         Halaman ini menampilkan daftar <span id="info-label" class="fw-bold">ruang observasi</span>.
-        Klik tombol <strong>"Detail"</strong> untuk melihat detail ruang <span id="info-label2"
+        Klik tombol <strong>"Mulai"</strong> untuk melihat detail ruang <span id="info-label2"
             class="fw-bold">observasi</span>.
     </div>
 

@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     deleteNameField: 'title',
 
     dataMapper: (q, i) => {
-      const detailBtn = `<a href="${window.BASE_URL}${window.URL_NAME}/Pbl_observasi/detail/${q.id}" class="btn btn-sm btn-bd-primary">Detail</a>`;
+      const detailBtn = `<a href="${window.BASE_URL}${window.URL_NAME}/Pbl_observasi/detail/${q.id}" class="btn btn-sm btn-bd-primary">Mulai</a>`;
       
       const actionBtns = IS_ADMIN_OR_GURU ? `
         <button class="btn btn-sm btn-warning btn-edit" data-id="${q.id}" data-title="${q.title}" data-description="${q.description || ''}">Ubah</i></button>
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     deleteNameField: 'title',
 
     dataMapper: (q, i) => {
-      const detailBtn = `<a href="${window.BASE_URL}${window.URL_NAME}/pbl_forum/detail/${q.id}" class="btn btn-sm btn-bd-primary">Detail</a>`;
+      const detailBtn = `<a href="${window.BASE_URL}${window.URL_NAME}/pbl_forum/detail/${q.id}" class="btn btn-sm btn-bd-primary">Mulai</a>`;
       
       const actionBtns = IS_ADMIN_OR_GURU ? `
         <button class="btn btn-sm btn-warning btn-edit" data-id="${q.id}" data-title="${q.title}" data-description="${q.description || ''}">Ubah</i></button>

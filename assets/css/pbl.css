@@ -109,7 +109,7 @@ body {
 }
 
 .nav-pills-custom .nav-link.active {
-    background-color: var(--pbl-teal);
+    background-color: var(--pbl-dark-blue);
     color: white;
     box-shadow: 0 4px 10px rgba(46, 196, 182, 0.4);
     transform: scale(1.05);
