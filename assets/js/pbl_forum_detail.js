@@ -56,12 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
       let buttons = '';
       if (isOwner) {
         buttons = `
-          <button class="btn btn-sm btn-link text-warning btn-edit"
+          <button class="btn btn-fun btn-yellow btn-edit p-1 m-2"
             data-id="${item.id}"
             data-post_content="${item.post_content}">
             Edit
           </button>
-          <button class="btn btn-sm btn-link text-danger btn-delete"
+          <button class="btn btn-fun btn-red btn-delete p-1 m-2"
             data-id="${item.id}"
             data-content="Postingan ini">
             Hapus

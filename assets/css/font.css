@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'Nunito';
+  src: url('Nunito.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('Nunito2.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('Open_Sans.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('Poppins.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fredoka';
+  src: url('Fredoka-Regular.ttf') format('truetype');
+}

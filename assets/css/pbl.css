@@ -7,10 +7,12 @@
     --pbl-light-blue: #e3f2fd;
     --pbl-dark-blue: #0052cc;
     --pbl-green: #52B788;
+    --pbl-dark-green: #3b8361;
     --pbl-teal: #2ec4b6;
     --pbl-orange: #ff9f1c;
     --pbl-yellow: #ffbf00;
     --pbl-red: #f5576c;
+    --pbl-dark-red: #b71e34;
     --pbl-purple: #8338ec;
     --text-dark: #2D3436;
     --white-glass: rgba(255, 255, 255, 0.9);
@@ -119,6 +121,7 @@ body {
 .nav-pills-custom .nav-link#tts-tab.active,
 .nav-pills-custom .nav-link#diskusi-tab.active {
     background-color: var(--pbl-orange);
+    color: #2a2626;
     box-shadow: 0 4px 10px rgba(255, 159, 28, 0.4);
 }
 
@@ -149,10 +152,13 @@ body {
 .btn-yellow { background: var(--pbl-yellow); color: #664d03 !important; }
 .btn-blue   { background: var(--pbl-blue); }
 .btn-green  { background: #06d6a0; }
-.btn-purple { background: var(--pbl-purple); }
+.btn-purple { background: var(--pbl-purple); color: #fff; }
 .btn-cyan   { background: var(--pbl-teal); }
+.btn-red   { background: var(--pbl-dark-red); color: #fff; }
 
 .text-dark-blue{ color: var(--pbl-dark-blue); }
+
+.text-dark-green{ color: var(--pbl-dark-green); }
 
 /* ===== TABEL (PERBAIKAN UTAMA) ===== */
 

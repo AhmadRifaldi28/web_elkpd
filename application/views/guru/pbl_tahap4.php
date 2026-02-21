@@ -31,7 +31,7 @@
         <div class="d-flex justify-content-center">
             <div class="fun-header">
                 <h1 class="fun-title">
-                    <i class="ri-team-fill text-warning me-2"></i> <?= $title ?>
+                    <i class="ri ri-file-edit-line text-dark-blue me-2"></i> <?= $title ?>
                 </h1>
             </div>
         </div>
@@ -40,10 +40,10 @@
     <div class="kids-panel">
 
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
-        <a href="<?= base_url($url_name . '/pbl/tahap3/' . $class_id) ?>" class="btn btn-secondary">
+        <a href="<?= base_url($url_name . '/pbl/tahap3/' . $class_id) ?>" class="btn btn-fun btn-yellow">
             <i class="ri-arrow-go-back-line"></i> Kembali
         </a>
-        <a href="<?= base_url($url_name . '/pbl/tahap5/' . $class_id); ?>" class="btn btn-outline-primary me-1">
+        <a href="<?= base_url($url_name . '/pbl/tahap5/' . $class_id); ?>" class="btn btn-fun btn-blue me-1">
             <i class="ri-line-chart-line"></i> Tahap 5
         </a>
     </div>
@@ -57,24 +57,24 @@
 
     <div class="alert alert-info border-0 shadow-sm">
         <i class="bi bi-info-circle-fill me-2"></i>
-        Halaman ini menampilkan daftar esai. Klik tombol <strong>"Detail" </strong>untuk melihat soal esai.
+        Halaman ini menampilkan daftar esai. Klik tombol <strong>"Kerjakan" </strong>untuk melihat soal esai.
     </div>
 
-    <ul class="nav nav-pills-custom m-3" id="pblTab" role="tablist">
+    <!-- <ul class="nav nav-pills-custom m-3" id="pblTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="solusi-tab" data-bs-toggle="tab" data-bs-target="#solusi" type="button"
                 role="tab">Aktivitas Esai Solusi</button>
         </li>
-    </ul>
+    </ul> -->
 
     <div class="tab-content" id="pblTabContent">
 
         <!-- Tab 1: Aktivitas Esai Solusi -->
         <div class="tab-pane fade show active" id="solusi" role="tabpanel">
             <div class="d-flex justify-content-between mb-2">
-                <h5>
+                <h5 class="text-dark-blue">
                     <i class="ri-file-edit-line me-1"></i>
-                    <strong class="text-dark">Daftar Aktivitas Esai</strong>
+                    Aktivitas Esai
                 </h5>
                 <?php if ($is_admin_or_guru): ?>
                 <div class="d-flex gap-2">

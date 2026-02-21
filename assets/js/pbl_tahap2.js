@@ -6,20 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const CURRENT_CLASS_ID = window.CURRENT_CLASS_ID || null;
 
   // Ambil elemen label yang mau diubah
-  const infoLabel = document.getElementById('info-label');
+  // const infoLabel = document.getElementById('info-label');
   // Ambil semua tombol tab
-  const tabEls = document.querySelectorAll('button[data-bs-toggle="tab"]');
+  // const tabEls = document.querySelectorAll('button[data-bs-toggle="tab"]');
   // Loop untuk pasang listener di setiap tab
-  tabEls.forEach(tabEl => {
+  /*tabEls.forEach(tabEl => {
     tabEl.addEventListener('shown.bs.tab', function (event) {
-      // event.target adalah tab yang baru saja aktif
       if (event.target.id === 'tts-tab') {
           infoLabel.textContent = 'tts';
       } else {
           infoLabel.textContent = 'kuis';
       }
     });
-  });
+  });*/
 
   //  Hapus tombol "Tambah" jika Murid
   if (!IS_ADMIN_OR_GURU) {

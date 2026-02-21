@@ -30,7 +30,7 @@
     <div class="d-flex justify-content-center">
         <div class="fun-header">
             <h1 class="fun-title">
-                <i class="ri-line-chart-line text-warning me-2"></i> <?= $title ?>
+                <i class="ri-line-chart-line text-dark-blue me-2"></i> <?= $title ?>
             </h1>
         </div>
     </div>
@@ -38,7 +38,7 @@
     <div class="kids-panel">
 
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <a href="<?= base_url($url_name . '/pbl/tahap4/' . $class_id) ?>" class="btn btn-secondary">
+        <a href="<?= base_url($url_name . '/pbl/tahap4/' . $class_id) ?>" class="btn btn-fun btn-yellow">
             <i class="ri-arrow-go-back-line"></i> Kembali
         </a>
         <!-- <button class="btn btn-success disabled" disabled><i class="bi bi-check-circle"></i> Project Selesai</button> -->

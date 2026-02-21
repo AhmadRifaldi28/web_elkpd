@@ -19,7 +19,7 @@
 	    <div class="d-flex justify-content-center">
 	        <div class="fun-header">
 	            <h1 class="fun-title">
-	                <i class="ri-palette-fill text-warning me-2"></i> Organisasi Belajar
+	                <i class="ri-palette-fill text-dark-blue me-2"></i> Organisasi Belajar
 	            </h1>
 	        </div>
 	    </div>
@@ -33,7 +33,7 @@
             </a>
             
             <a href="<?= base_url($url_name . '/pbl/tahap3/' . $class_id); ?>" class="btn btn-fun btn-blue">
-                Tahap 3 <i class="ri-survey-line"></i>
+                Tahap 3 <i class="ri-team-fill"></i>
             </a>
         </div>
 
@@ -42,7 +42,7 @@
         <input type="hidden" id="classIdHidden" value="<?= $class_id; ?>">
 
         <div class="alert alert-info border border-info border-2 rounded-4 d-flex align-items-center mb-4 shadow-sm p-3">
-            <i class="ri-lightbulb-flash-fill fs-3 me-3"></i>
+            <i class="ri-information-fill fs-3 me-3"></i>
             <div>
                 Pilih salah satu kegiatan di bawah ini: <strong>Kuis</strong> untuk latihan soal, atau <strong>Teka-Teki Silang</strong> untuk bermain kata!
             </div>
@@ -67,7 +67,7 @@
             
             <div class="tab-pane fade show active" id="quiz" role="tabpanel">
                 <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
-                    <h5 class="fw-bold text-dark-blue m-0">
+                    <h5 class="text-dark-blue m-0">
                         <i class="ri-question-line fs-4 me-1"></i>
                      Daftar Kuis</h5>
                     
@@ -106,7 +106,7 @@
 
             <div class="tab-pane fade" id="tts" role="tabpanel">
                 <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
-                    <h5 class="fw-bold text-dark-blue m-0"> 
+                    <h5 class="text-dark-blue m-0"> 
                         <i class="bi bi-dice-3-fill me-1"></i>
                     Daftar TTS</h5>
                     

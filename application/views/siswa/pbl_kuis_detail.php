@@ -123,7 +123,7 @@
     <div class="d-flex justify-content-center">
         <div class="fun-header">
             <h1 class="fun-title">
-                <i class="ri-question-line text-warning me-2"></i> <?= $title ?>
+                <i class="ri-question-line text-dark-blue me-2"></i> <?= $title ?>
             </h1>
         </div>
     </div>
@@ -146,7 +146,7 @@
                 <h4 class="fw-bold mb-1">HASIL PENGERJAAN</h4>
                 <h1 class="display-3 mb-3"><?= $result->score; ?></h1>
                 
-                <div class="d-flex justify-content-center gap-3 mb-3">
+                <div class="d-flex justify-content-center flex-wrap gap-3">
                     <span class="badge rounded-pill bg-success p-2 px-4 fs-5">
                         <i class="bi bi-check-circle"></i> Benar: <?= $result->total_correct; ?>
                     </span>

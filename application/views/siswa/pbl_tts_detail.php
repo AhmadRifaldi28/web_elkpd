@@ -97,11 +97,14 @@
 		background: white;
 		border-radius: 30px;
 		border: 5px solid #ffbf00;
-		padding: 20px;
-		margin-bottom: 25px;
+		padding: 10px;
+		max-width: 378px
+		/*margin-bottom: 25px;*/
 	}
 
-	.display-4 { font-family: 'Fredoka', sans-serif; color: #ffbf00; }
+	.emote-icon{margin: 0 10px;}
+
+	.display-4 { font-family: 'Fredoka', sans-serif; }
 
 	/* Custom Scrollbar for Clues */
 	#clueContent::-webkit-scrollbar { width: 8px; }
@@ -117,19 +120,19 @@
 	<div class="d-flex justify-content-between align-items-center mb-4 pt-3">
 		<div class="fun-header">
             <h1 class="fun-title">
-                <i class="bi bi-dice-3-fill text-warning me-2"></i> <?= $title ?>
+                <i class="bi bi-dice-3-fill text-dark-blue me-2"></i> <?= $title ?>
             </h1>
 		</div>
 		
 	</div>
 
 	<?php if ($result): ?>
-		<div class="score-badge text-center shadow-sm mx-auto mb-4" style="max-width: 500px;">
+		<div class="score-badge text-center shadow-sm">
 			<h4 class="mb-0 text-dark">
-				<i class="bi <?= ($result->score >= 70) ? 'bi-stars text-warning' : 'bi-emoji-smile-upside-down'; ?>"></i> 
-				<?= ($result->score >= 70) ? 'Hebat! Skor Kamu:' : 'Bagus! Skor Kamu:'; ?>
+				<i class="bi <?= ($result->score >= 70) ? 'bi-stars text-dark-green' : 'bi-emoji-smile-upside-down'; ?>"></i> 
+				<?= ($result->score >= 70) ? 'Hebat! Skor Kamu:' : 'Maaf! Skor Kamu:'; ?>
 			</h4>
-			<div class="display-4 fw-bold"><?= $result->score; ?></div>
+			<div class="display-4 fw-bold text-dark-green"><?= $result->score; ?></div>
 			<p class="text-muted mb-0">Kamu berhasil menjawab <?= $result->total_correct; ?> dari <?= $result->total_questions; ?> soal!</p>
 		</div>
 		<?php else: ?>
@@ -164,15 +167,15 @@
 					<div class="card-body p-0">
 						<div id="clueContent" style="height: 480px; overflow-y: auto;">
 							<div class="p-3 pb-0">
-								<h6 class="fw-bold text-primary border-bottom pb-2 mb-2 position-sticky top-0 bg-white" style="z-index: 10;">
-									<i class="bi bi-arrow-right-circle-fill"></i> Mendatar (Across)
+								<h6 class="fw-bold text-primary border-bottom p-2 m-2 position-sticky top-0 bg-white" style="z-index: 10;">
+									<i class="bi bi-arrow-right-circle-fill fs-5"></i> Mendatar (Across)
 								</h6>
 								<div class="list-group list-group-flush mb-4" id="listAcross"></div>
 							</div>
 
 							<div class="p-3 pt-0">
-								<h6 class="fw-bold text-danger border-bottom pb-2 mb-2 position-sticky top-0 bg-white" style="z-index: 10;">
-									<i class="bi bi-arrow-down-circle-fill"></i> Menurun (Down)
+								<h6 class="fw-bold text-danger border-bottom p-2 m-2 position-sticky top-0 bg-white" style="z-index: 10;">
+									<i class="bi bi-arrow-down-circle-fill fs-5"></i> Menurun (Down)
 								</h6>
 								<div class="list-group list-group-flush" id="listDown"></div>
 							</div>

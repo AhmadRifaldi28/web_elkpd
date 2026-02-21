@@ -1,5 +1,3 @@
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
-
 <style>
     .pagetitle { display: none !important; }
 
@@ -58,7 +56,7 @@
     }
 
     /* Penyesuaian Tabel agar tidak gepeng */
-    #myUploadsTable {
+    /*#myUploadsTable {
         border-collapse: separate !important;
         border-spacing: 0 8px !important;
         width: 100% !important;
@@ -77,7 +75,7 @@
         border-top: 2px solid #f0f0f0 !important;
         border-bottom: 2px solid #f0f0f0 !important;
         padding: 15px !important;
-    }
+    }*/
 </style>
 <link rel="stylesheet" href="<?= base_url('assets/css/pbl.css'); ?>">
 <!-- <main id="main" class="main"> -->
@@ -141,24 +139,24 @@
                         <?= nl2br(htmlspecialchars($slot->description)); ?>
                     </div>
                     <a href="<?= base_url('siswa/pbl/tahap3/' . $class_id) ?>" class="btn btn-fun btn-yellow w-100">
-                        <i class="bi bi-arrow-left-circle-fill me-2"></i> Kembali
+                        <i class="ri ri-arrow-go-back-line me-2"></i> Kembali
                     </a>
                 </div>
             </div>
 
             <div class="col-lg-8 order-lg-1">
                 <div class="kids-panel-custom uploadContainer">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
                         <h5 class="fw-bold text-dark m-0"><i class="bi bi-folder-fill text-warning me-2"></i>Laporanku</h5>
                         <?php if (empty($result)) : ?>
                             <button id="btnAddUpload" class="btn btn-fun btn-blue shadow-sm" data-bs-toggle="modal" data-bs-target="#uploadModal">
-                                <i class="bi bi-plus-circle-fill me-2"></i> Tambah File
+                                 Tambah File
                             </button>
                         <?php endif; ?>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-hover table-bordered align-middle" id="myUploadsTable" width="100%">
-                            <thead class="bg-light">
+                        <table class="table table-pbl align-middle" id="myUploadsTable" width="100%">
+                            <thead class="">
                                 <tr>
                                     <th class="text-center" width="6%">No</th>
                                     <th>Nama File</th>

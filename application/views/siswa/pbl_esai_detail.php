@@ -212,7 +212,7 @@
         <div class="d-flex align-items-center justify-content-between flex-wrap">
             <div>
                 <a href="<?= base_url('siswa/pbl/tahap4/' . $class_id); ?>" class="btn-fun btn-yellow mb-3">
-                    <i class="ri-arrow-left-circle-line"></i> Kembali
+                    <i class="ri ri-arrow-go-back-line"></i> Kembali
                 </a>
                 <h2 class="fun-title d-block"><?= html_escape($essay->title); ?></h2>
                 <p class="text-muted mb-0 mt-2" style="font-family: 'Nunito'; font-size: 1.1rem; max-width: 800px;">
@@ -250,16 +250,17 @@
     <!-- <div class="esai-panel"> -->
         
     </div>
-    <div class="kids-panel shadow-lg mb-5">
+    <div class="kids-pane shadow-lg mb-5">
         <div class="row">
             <div class="col-lg-7 mb-4">
                 <div class="card border-0" style="background: transparent;">
-                    <div class="d-flex align-items-center mb-3">
+                    <!-- <div class="d-flex align-items-center mb-3">
                         <div class="icon-box-small bg-primary me-3"><i class="bi bi-chat-left-dots-fill text-white"></i></div>
                         <h4 class="fun-title mb-0" style="font-size: 1.4rem;">Tantangan Pertanyaan</h4>
-                    </div>
+                    </div> -->
                     
                     <div class="table-responsive">
+                        <h4 class="fun-title text-center m-2" style="font-size: 1.4rem;">Tantangan Pertanyaan</h4>
                         <table class="table-pbl" id="questionTable">
                             <thead>
                                 <tr>
@@ -368,7 +369,7 @@
                     <div class="modal-footer border-0 bg-light p-4">
                         <button type="button" class="btn-fun btn-secondary" data-bs-dismiss="modal">Batal</button>
                         <button type="submit" class="btn-fun btn-blue px-5 shadow">
-                            Kirim Sekarang <i class="bi bi-send-check-fill ms-2"></i>
+                            Kirim Sekarang <i class="ri ri-send-plane-fill fs-5"></i>
                         </button>
                     </div>
                 </form>

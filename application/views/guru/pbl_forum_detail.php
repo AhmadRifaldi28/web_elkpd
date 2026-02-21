@@ -1,5 +1,3 @@
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-
 <style>
 /* ===== TEMA KONSISTEN PBL ANAK SD ===== */
 :root {
@@ -68,58 +66,14 @@
 }
 
 #postsTable thead th {
-    background-color: var(--pbl-blue) !important;
-    color: white !important;
+    background-color: var(--pbl-light-blue) !important;
+    /*color: white !important;*/
+    color: #003366 !important;
     font-family: var(--font-heading);
     border: none !important;
     padding: 15px 20px !important;
     font-size: 18px;
 }
-
-#postsTable thead th:first-child { border-radius: 20px 0 0 20px; }
-#postsTable thead th:last-child { border-radius: 0 20px 20px 0; }
-
-#postsTable tbody tr {
-    transition: all 0.3s ease;
-    background-color: #ffffff !important;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-/* Efek Zebra Pastel */
-#postsTable tbody tr:nth-child(even) {
-    background-color: #f0f9ff !important;
-}
-
-/* Hover Interaktif */
-#postsTable tbody tr:hover {
-    transform: scale(1.01) translateY(-2px);
-    background-color: #fff8e1 !important; /* Kuning soft saat di-hover */
-}
-
-#postsTable td {
-    border: none !important;
-    padding: 20px !important;
-    vertical-align: middle;
-}
-
-#postsTable td:first-child { border-radius: 20px 0 0 20px; }
-#postsTable td:last-child { border-radius: 0 20px 20px 0; }
-
-/* 5. Tombol & Aksi */
-.btn-fun {
-    font-family: var(--font-heading);
-    border-radius: 50px;
-    padding: 10px 25px;
-    font-weight: 600;
-    border: none;
-    box-shadow: 0 4px 0 rgba(0,0,0,0.1);
-    transition: all 0.2s;
-}
-
-.btn-fun:active { transform: translateY(3px); box-shadow: none; }
-
-.btn-primary-fun { background: var(--pbl-blue); color: white; }
-.btn-orange-fun { background: var(--pbl-orange); color: white; }
 
 /* 6. Modal Gaya "Buku Catatan" */
 .modal-content {
@@ -128,7 +82,7 @@
 }
 
 .modal-header {
-    background: var(--pbl-blue);
+    background: #0052cc;
     color: white;
     border-radius: 20px 20px 0 0;
     font-family: var(--font-heading);
@@ -147,14 +101,6 @@
     <div class="container-fluid">
 
         <div class="kids-panel">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <div class="fun-header">
-                    <h2 class="fun-title">💬 Ruang Diskusi</h2>
-                </div>
-                <a href="<?= base_url($url_name . '/pbl/tahap3/' . $topic->class_id) ?>" class="btn btn-fun btn-secondary">
-                    <i class="ri-arrow-go-back-line"></i> Kembali
-                </a>
-            </div>
 
             <div class="alert alert-info border-0 shadow-sm mb-4" style="border-radius: 20px;">
                 <i class="bi bi-chat-heart-fill me-2 fs-5"></i>
@@ -162,15 +108,19 @@
                 Klik tombol <span class="badge bg-primary">Tulis Diskusi</span> di bawah ya!
             </div>
 
-            <div class="mb-4">
-                <button class="btn btn-fun btn-primary-fun shadow-sm" id="btnAddPost">
-                    <i class="bi bi-plus-circle me-1"></i> Tulis Diskusi
+            <div class="d-flex flex-wrap gap-3 mb-4">
+                <button class="btn btn-fun btn-purple shadow-sm" id="btnAddPost">
+                    Tulis Diskusi
                 </button>
                 <?php if ($is_admin_or_guru): ?>
                     <a href="<?= base_url($url_name . '/pbl_forum/panduan_detail_diskusi_tahap3/' . $class_id); ?>" class="btn btn-fun btn-orange-fun mx-2">
                         <i class="bi bi-book me-1"></i> Panduan Guru
                     </a>
                 <?php endif; ?>
+
+                <a href="<?= base_url($url_name . '/pbl/tahap3/' . $topic->class_id) ?>" class="btn btn-fun btn-yellow">
+                    <i class="ri-arrow-go-back-line"></i> Kembali
+                </a>
             </div>
 
             <div class="card border-0 bg-transparent">
@@ -213,8 +163,8 @@
                     </div>
                 </div>
                 <div class="modal-footer border-0 p-4">
-                    <button type="button" class="btn btn-fun btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-fun btn-primary-fun px-5">Simpan & Kirim 🚀</button>
+                    <button type="button" class="btn btn-fun btn-yellow" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-fun btn-cyan px-5">Kirim <i class="ri ri-send-plane-fill fs-5"></i></button>
                 </div>
             </form>
         </div>

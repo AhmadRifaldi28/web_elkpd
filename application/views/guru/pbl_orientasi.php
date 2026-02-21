@@ -15,7 +15,7 @@
     <div class="d-flex justify-content-center mb-3">
         <div class="fun-header text-center">
             <h1 class="fun-title">
-                <i class="ri-compass-3-line text-warning me-2"></i> Orientasi Masalah
+                <i class="ri-compass-3-line text-dark-blue me-2"></i> Orientasi Masalah
             </h1>
         </div>
     </div>
@@ -46,10 +46,10 @@
                     </a>
                 <?php endif; ?>
                 
-                <a href="<?= base_url($url_name . '/pbl/tahap2/' . $class_id); ?>" class="btn btn-fun btn-blue text-dark">
-                    Tahap 2 <i class="ri-question-line fs-3"></i>
-                </a>
             </div>
+            <a href="<?= base_url($url_name . '/pbl/tahap2/' . $class_id); ?>" class="btn btn-fun btn-blue text-dark">
+                Tahap 2 <i class="ri-palette-fill fs-3"></i>
+            </a>
         </div>
 
         <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>"

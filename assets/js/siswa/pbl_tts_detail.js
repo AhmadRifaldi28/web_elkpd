@@ -166,7 +166,7 @@ function renderClues(questions, isReviewMode) {
         	} else {
         		html += `<div class="text-end ms-2">
         		<i class="bi bi-emoji-frown-fill text-danger emote-icon"></i><br>
-        		<small class="text-success fw-bold" style="font-size:0.7em">Jwb: ${q.key_answer}</small>
+        		<small class="text-success fw-bold" style="font-size:0.7em">Jawab: ${q.key_answer}</small>
         		</div>`;
         	}
         }

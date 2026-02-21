@@ -27,7 +27,7 @@
         <div class="d-flex justify-content-center">
             <div class="fun-header">
                 <h1 class="fun-title">
-                    <i class="ri-team-fill text-warning me-2"></i> <?= $title ?>
+                    <i class="ri-team-fill text-dark-blue me-2"></i> <?= $title ?>
                 </h1>
             </div>
         </div>
@@ -36,10 +36,10 @@
     <div class="kids-panel">
         
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
-        <a href="<?= base_url($url_name . '/pbl/tahap2/' . $class_id) ?>" class="btn btn-secondary">
+        <a href="<?= base_url($url_name . '/pbl/tahap2/' . $class_id) ?>" class="btn btn-fun btn-yellow">
             <i class="ri-arrow-go-back-line"></i> Kembali
         </a>
-        <a href="<?= base_url($url_name . '/pbl/tahap4/' . $class_id); ?>" class="btn btn-outline-primary me-1">
+        <a href="<?= base_url($url_name . '/pbl/tahap4/' . $class_id); ?>" class="btn btn-fun btn-blue me-1">
             <i class="ri-file-edit-line"></i> Tahap 4
         </a>
     </div>
@@ -55,7 +55,7 @@
             class="fw-bold">observasi</span>.
     </div>
 
-    <div class="text-center m-2">
+    <div class="text-center mb-4">
         <ul class="nav nav-pills-custom" id="pblTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="observasi-tab" data-bs-toggle="tab" data-bs-target="#observasi"
@@ -73,9 +73,9 @@
         <!-- Tab 1: Ruang Observasi -->
         <div class="tab-pane fade show active" id="observasi" role="tabpanel">
             <div class="d-flex justify-content-between mb-2">
-                <h5>
+                <h5 class="text-dark-blue">
                     <i class="ri-survey-line me-1"></i>
-                    <strong class="text-dark">Daftar Ruang Observasi</strong>
+                    Ruang Observasi
                 </h5>
                 <div class="d-flex gap-2">
                     <?php if ($is_admin_or_guru): ?>
@@ -112,9 +112,9 @@
         <!-- Tab 2: Forum Diskusi -->
         <div class="tab-pane fade" id="diskusi" role="tabpanel">
             <div class="d-flex justify-content-between mb-2">
-                <h5>
+                <h5 class="text-dark-blue">
                     <i class="bi bi-chat-text me-1"></i>
-                    <strong>Daftar Topik Diskusi</strong>
+                    Topik Diskusi
                 </h5>
                 <?php if ($is_admin_or_guru): ?>
                 <div class="d-flex gap-2">
